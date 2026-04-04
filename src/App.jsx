@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Philosophy from './components/Philosophy';
 import Numbers from './components/Numbers';
+import Domains from './components/Domains';
 import Aftermovie from './components/Aftermovie';
 import About from './pages/About';
 import Team from './pages/Team';
@@ -19,6 +20,7 @@ function Home() {
     <>
       <Hero />
       <Philosophy />
+      <Domains />
       <Numbers />
       <Aftermovie />
     </>

@@ -37,17 +37,14 @@ export default function Philosophy() {
       cards.forEach((card, i) => {
         if (!card) return;
         if (i < idx) {
-          // passed — scale down, stay visible
           card.style.opacity = '0.45';
           card.style.transform = 'translateY(0px) scale(0.93)';
           card.style.filter = 'blur(1px)';
         } else if (i === idx) {
-          // active
           card.style.opacity = '1';
           card.style.transform = 'translateY(0px) scale(1)';
           card.style.filter = 'blur(0px)';
         } else {
-          // upcoming — hidden below
           card.style.opacity = '0';
           card.style.transform = 'translateY(80px) scale(0.95)';
           card.style.filter = 'blur(4px)';
@@ -79,15 +76,12 @@ export default function Philosophy() {
       return obs;
     });
 
-    // Parallax on scroll
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
       cards.forEach((card, i) => {
         if (!card || i !== activeIndex.current) return;
-        const shift = (progress - (i / pillars.length)) * 18;
-        const base = card.style.transform.replace(/\s*translateY\([^)]*\)/, '');
+        const shift = (-rect.top / (rect.height - window.innerHeight) - (i / pillars.length)) * 18;
         card.style.transform = `translateY(${-shift}px) scale(1)`;
       });
     };
@@ -101,7 +95,7 @@ export default function Philosophy() {
 
   return (
     <section id="philosophy" className="phil-section" ref={sectionRef}>
-      {/* ── LEFT sticky panel ── */}
+      {/* LEFT sticky panel */}
       <div className="phil-left">
         <div className="phil-left-inner">
           <div className="section-label">Our Ethos</div>
@@ -128,7 +122,7 @@ export default function Philosophy() {
         </div>
       </div>
 
-      {/* ── RIGHT scrolling cards ── */}
+      {/* RIGHT scrolling cards */}
       <div className="phil-right">
         <div className="phil-cards-wrap">
           {pillars.map((p, i) => (
