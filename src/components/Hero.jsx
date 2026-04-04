@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const parallaxRef = useRef(null);
@@ -24,9 +25,9 @@ export default function Hero() {
         </h1>
         <p className="hero-tagline">Crafting Excellence</p>
         <p className="hero-desc">A prestigious sanctuary for the modern academic. We bridge the gap between technical prowess and professional presence through curated soft-skill mastery.</p>
-        <a href="#philosophy" className="btn-primary">
+        <Link to="/about" className="btn-primary">
           Explore More <span className="btn-arrow">→</span>
-        </a>
+        </Link>
       </div>
 
       <div className="hero-right">

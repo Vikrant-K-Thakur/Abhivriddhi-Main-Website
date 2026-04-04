@@ -1,7 +1,18 @@
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+const links = [
+  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
+  { to: '/team', label: 'Team' },
+  { to: '/events', label: 'Events' },
+  { to: '/sponsors', label: 'Sponsors' },
+  { to: '/contact', label: 'Contact Us' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -11,13 +22,28 @@ export default function Navbar() {
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
-      <a href="#" className="nav-logo">Abhivriddhi</a>
-      <ul className="nav-links">
-        <li><a href="#" className="active">Home</a></li>
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Archives</a></li>
+      <NavLink to="/" className="nav-logo">Abhivriddhi</NavLink>
+
+      <ul className={`nav-links ${open ? 'nav-open' : ''}`}>
+        {links.map(l => (
+          <li key={l.to}>
+            <NavLink
+              to={l.to}
+              end={l.to === '/'}
+              className={({ isActive }) => isActive ? 'active' : ''}
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
+
+      <button className="nav-hamburger" onClick={() => setOpen(o => !o)} aria-label="Toggle menu">
+        <span className={open ? 'bar bar-top open' : 'bar bar-top'} />
+        <span className={open ? 'bar bar-mid open' : 'bar bar-mid'} />
+        <span className={open ? 'bar bar-bot open' : 'bar bar-bot'} />
+      </button>
     </nav>
   );
 }

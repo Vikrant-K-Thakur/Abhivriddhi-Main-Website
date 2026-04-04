@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer>
@@ -7,12 +9,11 @@ export default function Footer() {
           <div className="footer-brand-desc">Cultivating character through disciplined growth and professional mastery.</div>
         </div>
         <div>
-          <div className="footer-col-title">Organizers</div>
+          <div className="footer-col-title">Quick Links</div>
           <div className="footer-organizer">
-            <div className="organizer-item">Name <span>· Number</span></div>
-            <div className="organizer-item">Name <span>· Number</span></div>
-            <div className="organizer-item">Name <span>· Number</span></div>
-            <div className="organizer-item" style={{ color: 'var(--accent)', fontSize: '0.8rem', marginTop: '0.4rem' }}>email@abhivriddhi.com</div>
+            {[['Home', '/'], ['About', '/about'], ['Team', '/team'], ['Events', '/events'], ['Sponsors', '/sponsors'], ['Contact Us', '/contact']].map(([label, to]) => (
+              <Link key={to} to={to} className="organizer-item" style={{ textDecoration: 'none' }}>{label}</Link>
+            ))}
           </div>
         </div>
         <div>
@@ -35,7 +36,7 @@ export default function Footer() {
         <div className="footer-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
-          <a href="#">Contact Us</a>
+          <Link to="/contact">Contact Us</Link>
         </div>
       </div>
     </footer>
