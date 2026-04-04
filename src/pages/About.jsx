@@ -60,6 +60,21 @@ function Label({ children }) {
   );
 }
 
+function SectionLabel({ children }) {
+  return (
+    <span style={{
+      fontFamily: T.fontSerif,
+      fontWeight: 400,
+      fontSize: '2rem',
+      letterSpacing: '0.05em',
+      color: T.accent,
+      display: 'block',
+    }}>
+      {children}
+    </span>
+  );
+}
+
 /* ─── Animated headline ─── */
 function AnimHeading({ lines, tag: Tag = 'h1', style = {}, baseDelay = 0.1 }) {
   let delay = baseDelay;
@@ -236,7 +251,7 @@ function AboutSection() {
       }}>
         <Reveal>
           <div style={{ position: 'sticky', top: '7rem' }}>
-            <Label>About</Label>
+            <SectionLabel>About</SectionLabel>
             <div style={{ width: '32px', height: '1px', background: T.accent, marginTop: '1rem' }} />
           </div>
         </Reveal>
@@ -315,7 +330,7 @@ function Vision() {
       <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '6rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
         <Reveal>
           <div style={{ position: 'sticky', top: '7rem' }}>
-            <Label>Vision</Label>
+            <SectionLabel>Vision</SectionLabel>
             <div style={{ width: '32px', height: '1px', background: T.accent, marginTop: '1rem' }} />
           </div>
         </Reveal>
@@ -392,7 +407,7 @@ function Mission() {
       <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '6rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
         <Reveal>
           <div style={{ position: 'sticky', top: '7rem' }}>
-            <Label>Mission</Label>
+            <SectionLabel>Mission</SectionLabel>
             <div style={{ width: '32px', height: '1px', background: T.accent, marginTop: '1rem' }} />
           </div>
         </Reveal>
