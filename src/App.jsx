@@ -12,14 +12,13 @@ export default function App() {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoaderDone = useCallback(() => {
-    document.getElementById('loader').classList.add('hidden');
     document.body.classList.add('loaded');
     setLoaded(true);
   }, []);
 
   return (
     <>
-      {!loaded && <Loader onDone={handleLoaderDone} />}
+      <Loader hidden={loaded} onDone={handleLoaderDone} />
       <Navbar />
       <Hero />
       <Philosophy />

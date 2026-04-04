@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-export default function Loader({ onDone }) {
+export default function Loader({ hidden, onDone }) {
   const wordRef = useRef(null);
+  const started = useRef(false);
 
   useEffect(() => {
+    if (started.current) return;
+    started.current = true;
+
     const word = 'Abhivriddhi';
     const container = wordRef.current;
     const cursor = document.createElement('span');
@@ -26,7 +30,7 @@ export default function Loader({ onDone }) {
   }, []);
 
   return (
-    <div id="loader">
+    <div id="loader" className={hidden ? 'hidden' : ''}>
       <div className="loader-word" ref={wordRef}></div>
     </div>
   );
