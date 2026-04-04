@@ -4,6 +4,7 @@ const stats = [
   { target: 100, suffix: '+', label: 'Industry Experts & Inspiring Speakers' },
   { target: 75, suffix: '%', label: 'Students Built Their LinkedIn Profiles With Us' },
   { target: 15, suffix: '+', label: 'Partnered Colleges' },
+  { target: 1500, suffix: '+', label: 'Students Engaged in EATON Changing Gears' },
   { target: 80, suffix: '%', label: 'Participants Satisfied with Main Events' },
   { target: 800, suffix: '+', label: 'Attendees Per Event' },
 ];
@@ -22,7 +23,6 @@ function animateCount(el, target, suffix) {
 }
 
 export default function Numbers() {
-  const headerRef = useRef(null);
   const gridRef = useRef(null);
   const animated = useRef(new Set());
 
@@ -51,7 +51,6 @@ export default function Numbers() {
       });
     }, { threshold: 0.3 });
 
-    if (headerRef.current) observer.observe(headerRef.current);
     if (gridRef.current) {
       observer.observe(gridRef.current);
       gridRef.current.querySelectorAll('.stat-card').forEach(c => statObs.observe(c));
@@ -62,10 +61,6 @@ export default function Numbers() {
 
   return (
     <section id="numbers">
-      <div className="numbers-header reveal" ref={headerRef}>
-        <div className="section-label">Impact in Numbers</div>
-        <h2 className="section-heading">The <em>Measure</em> of Growth</h2>
-      </div>
       <div className="numbers-grid reveal-stagger" ref={gridRef}>
         {stats.map((s, i) => (
           <div className="stat-card" key={i} data-idx={i}>
