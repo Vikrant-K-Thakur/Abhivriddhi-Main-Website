@@ -156,7 +156,29 @@ function Hero() {
         gap: '1.2rem',
       }}>
         <Reveal>
-          <Label>About Abhivriddhi</Label>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '7px',
+            fontSize: '0.68rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: T.accent,
+            border: `1px solid ${T.accent}38`,
+            padding: '5px 14px',
+            borderRadius: '20px',
+            background: `${T.accent}12`,
+            fontFamily: T.fontSans,
+            fontWeight: 500,
+          }}>
+            <span style={{
+              width: '6px', height: '6px', borderRadius: '50%',
+              background: T.accent,
+              animation: 'ab-dot 2s ease-in-out infinite',
+              flexShrink: 0,
+            }} />
+            About Abhivriddhi
+          </div>
         </Reveal>
         <Reveal delay={150}>
           <AnimHeading
@@ -527,8 +549,9 @@ const aboutStyles = `
   .ab-char-space { display: inline-block; width: 0.28em; }
   @keyframes ab-chin { to { opacity: 1; transform: translateY(0); } }
 
-  .ab-btn-primary {
-    font-family: 'DM Sans', sans-serif;
+  @keyframes ab-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.65)} }
+
+  .ab-btn-primary {    font-family: 'DM Sans', sans-serif;
     font-weight: 500;
     font-size: 0.85rem;
     letter-spacing: 0.06em;
