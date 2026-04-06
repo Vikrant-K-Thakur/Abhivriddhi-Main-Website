@@ -108,40 +108,40 @@ function Hero() {
       position: 'relative',
       overflow: 'hidden',
     }}>
+      {/* Stars background — same as Events page */}
+      <div style={{
+        position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0,
+        background: `
+          radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.6) 0%, transparent 100%),
+          radial-gradient(1px 1px at 72% 8%,  rgba(255,255,255,0.4) 0%, transparent 100%),
+          radial-gradient(1px 1px at 40% 55%, rgba(255,255,255,0.3) 0%, transparent 100%),
+          radial-gradient(1px 1px at 88% 43%, rgba(255,255,255,0.5) 0%, transparent 100%),
+          radial-gradient(1px 1px at  5% 78%, rgba(255,255,255,0.3) 0%, transparent 100%),
+          radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.45) 0%, transparent 100%),
+          radial-gradient(1px 1px at 30% 35%, rgba(255,255,255,0.25) 0%, transparent 100%),
+          radial-gradient(1px 1px at 95% 70%, rgba(255,255,255,0.4)  0%, transparent 100%),
+          radial-gradient(1px 1px at 55% 28%, rgba(255,255,255,0.35) 0%, transparent 100%),
+          radial-gradient(1px 1px at 18% 62%, rgba(255,255,255,0.3)  0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 50% 15%, rgba(184,204,138,0.4) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 80% 85%, rgba(184,204,138,0.3) 0%, transparent 100%),
+          radial-gradient(1.5px 1.5px at 22% 90%, rgba(184,204,138,0.2) 0%, transparent 100%)
+        `,
+      }} />
+      {/* Hero radial glow */}
+      <div style={{
+        position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
+        width: '700px', height: '350px', pointerEvents: 'none',
+        background: 'radial-gradient(ellipse at center, rgba(184,204,138,0.07) 0%, transparent 65%)',
+      }} />
       {/* Grid overlay */}
       <div style={{
-        position: 'absolute', inset: 0,
+        position: 'absolute', inset: 0, pointerEvents: 'none',
         backgroundImage: `
           linear-gradient(rgba(184,204,138,0.03) 1px, transparent 1px),
           linear-gradient(90deg, rgba(184,204,138,0.03) 1px, transparent 1px)
         `,
         backgroundSize: '60px 60px',
-        pointerEvents: 'none',
       }} />
-      {/* Radial glow */}
-      <div style={{
-        position: 'absolute', top: '-20%', left: '-10%',
-        width: '60vw', height: '60vw',
-        background: 'radial-gradient(circle, rgba(184,204,138,0.04) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
-
-      {/* Large background text */}
-      <div style={{
-        position: 'absolute', top: '50%', left: '50%',
-        transform: 'translate(-50%, -50%)',
-        fontFamily: T.fontSerif,
-        fontSize: 'clamp(8rem, 20vw, 22rem)',
-        fontWeight: 300,
-        letterSpacing: '-0.02em',
-        color: 'transparent',
-        WebkitTextStroke: `1px rgba(184,204,138,0.06)`,
-        whiteSpace: 'nowrap',
-        pointerEvents: 'none',
-        userSelect: 'none',
-      }}>
-        अभिवृद्धि
-      </div>
 
       {/* CENTER — About Abhivriddhi headline */}
       <div style={{
