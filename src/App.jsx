@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState, useCallback, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './index.css';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
@@ -14,6 +14,12 @@ import Team from './pages/Team';
 import Events from './pages/Events';
 import Sponsors from './pages/Sponsors';
 import Contact from './pages/Contact';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [pathname]);
+  return null;
+}
 
 function Home() {
   return (
@@ -37,6 +43,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Loader hidden={loaded} onDone={handleLoaderDone} />
       <Navbar />
       <Routes>

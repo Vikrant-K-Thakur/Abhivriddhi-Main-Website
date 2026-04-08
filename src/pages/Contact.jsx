@@ -24,7 +24,10 @@ const styles = `
   /* HERO */
   .c-hero {
     position: relative; z-index: 1;
-    text-align: center; padding: 110px 24px 55px;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 120px 24px;
     background: #0a0d0f;
   }
   .c-hero::before {

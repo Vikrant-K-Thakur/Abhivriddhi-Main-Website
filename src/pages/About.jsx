@@ -103,8 +103,8 @@ function Hero() {
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between',
-      padding: '0 4rem 5rem',
+      justifyContent: 'center',
+      padding: '0 4rem',
       position: 'relative',
       overflow: 'hidden',
       background: '#0a0d0f',
@@ -184,59 +184,6 @@ function Hero() {
         </Reveal>
       </div>
 
-      {/* BOTTOM — metadata + rule + heading + description */}
-      <div style={{ position: 'relative', zIndex: 2 }}>
-        {/* Top metadata row */}
-        <div style={{
-          display: 'flex', justifyContent: 'space-between',
-          alignItems: 'center', marginBottom: '2rem',
-        }}>
-          <Reveal><Label>Student Training &amp; Development Club</Label></Reveal>
-          <Reveal delay={100}>
-            <span style={{ fontFamily: T.fontSans, fontSize: '0.75rem', color: T.textDim, letterSpacing: '0.05em' }}>
-              Est. 2021 · India
-            </span>
-          </Reveal>
-        </div>
-
-        <Reveal delay={150}><Rule /></Reveal>
-
-        {/* Heading left, description right */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '4rem',
-          alignItems: 'flex-end',
-          marginTop: '3rem',
-        }}>
-          <Reveal delay={200}>
-            <AnimHeading
-              tag="h2"
-              lines={[{ text: 'Growing' }, { text: 'Together.', accent: true }]}
-              baseDelay={0.2}
-              style={{
-                fontFamily: T.fontSerif,
-                fontWeight: 300,
-                fontSize: 'clamp(3.5rem, 7vw, 7rem)',
-                lineHeight: 0.92,
-                letterSpacing: '-0.02em',
-                color: T.text,
-              }}
-            />
-          </Reveal>
-          <Reveal delay={300}>
-            <p style={{
-              fontFamily: T.fontSans,
-              fontWeight: 300,
-              fontSize: '1rem',
-              lineHeight: 1.9,
-              color: T.textMuted,
-            }}>
-              Abhivriddhi is a student-led club dedicated to transforming academic learners into industry-ready professionals through structured training, mentorship, and experiential development.
-            </p>
-          </Reveal>
-        </div>
-      </div>
     </section>
   );
 }
@@ -245,7 +192,7 @@ function Hero() {
 function AboutSection() {
   return (
     <section style={{
-      padding: '8rem 4rem',
+      padding: '6rem 4rem',
       borderTop: `1px solid ${T.borderSubtle}`,
       position: 'relative',
     }}>
@@ -265,45 +212,39 @@ function AboutSection() {
             <h2 style={{
               fontFamily: T.fontSerif, fontWeight: 300,
               fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.2,
-              color: T.text, marginBottom: '2.5rem', letterSpacing: '-0.01em',
+              color: T.text, marginBottom: '1.5rem', letterSpacing: '-0.01em',
             }}>
               A space where potential<br />
               finds its <em style={{ color: T.accent, fontStyle: 'italic' }}>direction.</em>
             </h2>
           </Reveal>
+          <Reveal delay={100}>
+            <p style={{
+              fontFamily: T.fontSans, fontWeight: 300,
+              fontSize: '0.95rem', lineHeight: 1.9,
+              color: T.textMuted, maxWidth: '600px', marginBottom: '3rem',
+            }}>
+              Abhivriddhi — meaning growth and prosperity — is a student-led club bridging the gap between academic learning and industry readiness through workshops, mentorship, and real-world experiences.
+            </p>
+          </Reveal>
 
-          {[
-            { delay: 100, text: 'Abhivriddhi — derived from the Sanskrit word meaning growth and prosperity — was founded on a simple but powerful belief: that every student is capable of extraordinary things when given the right environment to flourish.' },
-            { delay: 200, text: 'We are a student-run organization that operates at the intersection of technical skill-building, professional development, and personal growth. Through carefully designed programs — workshops, bootcamps, competitions, and mentorship initiatives — we create pathways for students to bridge the gap between classroom knowledge and industry expectation.' },
-            { delay: 300, text: 'What distinguishes us is our culture — one built on peer learning, honest mentorship, and the belief that growth is not individual. When one member rises, the entire community rises with them.' },
-          ].map(({ delay, text }, i) => (
-            <Reveal key={i} delay={delay}>
-              <p style={{
-                fontFamily: T.fontSans, fontWeight: 300,
-                fontSize: '0.95rem', lineHeight: 1.9,
-                color: T.textMuted, maxWidth: '680px',
-                marginBottom: i < 2 ? '1.8rem' : '3.5rem',
-              }}>{text}</p>
-            </Reveal>
-          ))}
-
-          <Reveal delay={400}>
+          <Reveal delay={200}>
             <Rule />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', marginTop: '2.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', marginTop: '2rem' }}>
               {[
-                { title: 'Technical Training', desc: 'Workshops and bootcamps aligned with industry standards and emerging technologies.' },
-                { title: 'Leadership Development', desc: 'Programs that cultivate decision-making, communication, and team management.' },
-                { title: 'Career Mentorship', desc: 'Guided pathways connecting students with professionals and alumni networks.' },
+                { title: 'Technical Training', desc: 'Workshops aligned with industry standards.' },
+                { title: 'Leadership', desc: 'Programs that build communication and team skills.' },
+                { title: 'Career Mentorship', desc: 'Connecting students with professionals and alumni.' },
               ].map((p, i) => (
                 <div key={p.title} style={{
-                  padding: '2rem',
+                  padding: '1.5rem',
                   borderLeft: `1px solid ${T.borderSubtle}`,
                   borderRight: i === 2 ? `1px solid ${T.borderSubtle}` : 'none',
-                  paddingLeft: i === 0 ? '0' : '2rem',
+                  paddingLeft: i === 0 ? '0' : '1.5rem',
                   borderLeftWidth: i === 0 ? '0' : '1px',
                 }}>
-                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1rem', color: T.text, marginBottom: '0.6rem' }}>{p.title}</div>
-                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.8, color: T.textDim }}>{p.desc}</p>
+                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1rem', color: T.text, marginBottom: '0.4rem' }}>{p.title}</div>
+                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: T.textDim }}>{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -318,7 +259,7 @@ function AboutSection() {
 function Vision() {
   return (
     <section id="vision" style={{
-      padding: '8rem 4rem',
+      padding: '6rem 4rem',
       borderTop: `1px solid ${T.borderSubtle}`,
       position: 'relative', overflow: 'hidden',
     }}>
@@ -344,41 +285,36 @@ function Vision() {
             <p style={{
               fontFamily: T.fontSerif, fontWeight: 300, fontStyle: 'italic',
               fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.5,
-              color: T.textDim, marginBottom: '3.5rem',
+              color: T.textDim, marginBottom: '2rem',
               letterSpacing: '0.01em', maxWidth: '720px',
             }}>
               "To be the most impactful student development community in India."
             </p>
           </Reveal>
+          <Reveal delay={120}>
+            <p style={{
+              fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
+              lineHeight: 1.9, color: T.textMuted, maxWidth: '600px', marginBottom: '3rem',
+            }}>
+              We envision a future where every student has access to the tools, mentors, and community needed to bridge the gap between academic preparation and professional readiness.
+            </p>
+          </Reveal>
 
-          {[
-            { delay: 120, text: 'We envision a future where every student — regardless of background or circumstance — has access to the tools, mentors, and communities needed to realize their full potential. A future where the gap between academic preparation and professional readiness no longer exists.' },
-            { delay: 240, text: 'Abhivriddhi aspires to be the launchpad from which students emerge not merely as skilled professionals, but as thoughtful leaders and responsible contributors to society. We are building a generation that is technically excellent, emotionally intelligent, and socially aware.' },
-          ].map(({ delay, text }, i) => (
-            <Reveal key={i} delay={delay}>
-              <p style={{
-                fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
-                lineHeight: 1.9, color: T.textMuted, maxWidth: '680px',
-                marginBottom: i === 0 ? '1.8rem' : '4rem',
-              }}>{text}</p>
-            </Reveal>
-          ))}
-
-          <Reveal delay={360}>
+          <Reveal delay={240}>
             {[
-              { num: '01', heading: 'Inclusive Excellence', body: 'Creating an environment where every student can compete, contribute, and excel on equal footing.' },
-              { num: '02', heading: 'Industry Alignment', body: 'Ensuring our programs remain current, rigorous, and reflective of real-world demands.' },
-              { num: '03', heading: 'Lasting Community', body: 'Forging bonds and networks that extend far beyond graduation and shape careers for decades.' },
+              { num: '01', heading: 'Inclusive Excellence', body: 'Every student can compete, contribute, and excel on equal footing.' },
+              { num: '02', heading: 'Industry Alignment', body: 'Programs that stay current, rigorous, and reflective of real-world demands.' },
+              { num: '03', heading: 'Lasting Community', body: 'Bonds and networks that extend far beyond graduation.' },
             ].map((v) => (
               <div key={v.num} style={{
                 display: 'grid', gridTemplateColumns: '60px 1fr',
-                gap: '2rem', padding: '2rem 0',
+                gap: '2rem', padding: '1.5rem 0',
                 borderTop: `1px solid ${T.borderSubtle}`, alignItems: 'start',
               }}>
                 <span style={{ fontFamily: T.fontSerif, fontWeight: 300, fontSize: '1rem', color: T.accent, paddingTop: '0.15rem' }}>{v.num}</span>
                 <div>
-                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1.1rem', color: T.text, marginBottom: '0.4rem' }}>{v.heading}</div>
-                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.9, color: T.textMuted }}>{v.body}</p>
+                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1.1rem', color: T.text, marginBottom: '0.3rem' }}>{v.heading}</div>
+                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.8, color: T.textMuted }}>{v.body}</p>
                 </div>
               </div>
             ))}
@@ -394,7 +330,7 @@ function Vision() {
 function Mission() {
   return (
     <section id="mission" style={{
-      padding: '8rem 4rem',
+      padding: '6rem 4rem',
       borderTop: `1px solid ${T.borderSubtle}`,
       background: T.bg2,
       position: 'relative', overflow: 'hidden',
@@ -421,93 +357,42 @@ function Mission() {
             <p style={{
               fontFamily: T.fontSerif, fontWeight: 300, fontStyle: 'italic',
               fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.5,
-              color: T.textDim, marginBottom: '3.5rem', maxWidth: '720px',
+              color: T.textDim, marginBottom: '2rem', maxWidth: '720px',
             }}>
-              "To cultivate a vibrant learning ecosystem that equips students with excellence, acumen, and purpose."
+              "To cultivate a learning ecosystem that equips students with excellence, acumen, and purpose."
+            </p>
+          </Reveal>
+          <Reveal delay={120}>
+            <p style={{
+              fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
+              lineHeight: 1.9, color: T.textMuted, maxWidth: '600px', marginBottom: '3rem',
+            }}>
+              Every program we run is crafted with intention — producing measurable growth in our members' skills, confidence, and career prospects.
             </p>
           </Reveal>
 
-          {[
-            { delay: 120, text: "Our mission is to design and deliver transformative learning experiences that go beyond theoretical knowledge. Every program, event, and initiative we run is crafted with intentionality — aimed at producing measurable growth in our members' capabilities, confidence, and career prospects." },
-            { delay: 240, text: 'We believe that student development is a holistic endeavor. Technical competence alone is insufficient. We invest in soft skills, critical thinking, ethical reasoning, and the interpersonal dynamics that determine success in complex professional environments.' },
-          ].map(({ delay, text }, i) => (
-            <Reveal key={i} delay={delay}>
-              <p style={{
-                fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
-                lineHeight: 1.9, color: T.textMuted, maxWidth: '680px',
-                marginBottom: i === 0 ? '1.8rem' : '4rem',
-              }}>{text}</p>
-            </Reveal>
-          ))}
-
-          <Reveal delay={360}>
+          <Reveal delay={240}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
               {[
-                { title: 'Hands-On Training', body: 'Intensive workshops, coding bootcamps, and project-based learning that builds real competence through practice, not passive instruction.' },
-                { title: 'Mentorship Programs', body: 'Structured one-on-one and cohort-based mentorship with industry professionals and high-achieving alumni who invest in the next generation.' },
-                { title: 'Competitive Exposure', body: 'Hackathons, case competitions, and inter-college challenges that sharpen problem-solving under pressure and build a competitive edge.' },
-                { title: 'Community Culture', body: 'Fostering an environment of psychological safety, mutual accountability, and shared ambition where students dare to aim higher.' },
+                { title: 'Hands-On Training', body: 'Workshops and project-based learning that builds real competence.' },
+                { title: 'Mentorship', body: 'One-on-one guidance from industry professionals and alumni.' },
+                { title: 'Competitions', body: 'Hackathons and challenges that sharpen problem-solving skills.' },
+                { title: 'Community', body: 'A culture of shared ambition and mutual growth.' },
               ].map((m, i) => (
                 <div key={m.title} style={{
-                  padding: '2.5rem',
+                  padding: '1.8rem',
                   borderTop: `1px solid ${T.borderSubtle}`,
                   borderLeft: i % 2 !== 0 ? `1px solid ${T.borderSubtle}` : 'none',
                   borderBottom: i < 2 ? `1px solid ${T.borderSubtle}` : 'none',
-                  paddingLeft: i % 2 === 0 ? '0' : '2.5rem',
+                  paddingLeft: i % 2 === 0 ? '0' : '1.8rem',
                 }}>
-                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1.1rem', color: T.text, marginBottom: '0.7rem' }}>{m.title}</div>
-                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.85, color: T.textMuted }}>{m.body}</p>
+                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1.1rem', color: T.text, marginBottom: '0.4rem' }}>{m.title}</div>
+                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.75, color: T.textMuted }}>{m.body}</p>
                 </div>
               ))}
             </div>
           </Reveal>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── CLOSING ─── */
-function Closing() {
-  return (
-    <section style={{
-      padding: '10rem 4rem',
-      borderTop: `1px solid ${T.borderSubtle}`,
-      textAlign: 'center', position: 'relative', overflow: 'hidden',
-    }}>
-      <div style={{
-        position: 'absolute', top: '50%', left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '600px', height: '600px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(184,204,138,0.05) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-      <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
-        <Reveal><Label>Join the Movement</Label></Reveal>
-        <Reveal delay={100}>
-          <h2 style={{
-            fontFamily: T.fontSerif, fontWeight: 300,
-            fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: 1.1,
-            letterSpacing: '-0.02em', color: T.text, margin: '2rem 0 2.5rem',
-          }}>
-            Your growth<br />
-            <em style={{ fontStyle: 'italic', color: T.accent }}>starts here.</em>
-          </h2>
-        </Reveal>
-        <Reveal delay={200}>
-          <p style={{
-            fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
-            lineHeight: 1.9, color: T.textMuted, marginBottom: '3.5rem',
-          }}>
-            Become part of a community that takes student development seriously. We are looking for individuals who are driven, curious, and committed to growing beyond what they believe is possible.
-          </p>
-        </Reveal>
-        <Reveal delay={300}>
-          <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#apply" className="ab-btn-primary">Apply Now →</a>
-            <a href="#contact" className="ab-btn-secondary">Get in Touch</a>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
@@ -576,7 +461,6 @@ export default function About() {
       <AboutSection />
       <Vision />
       <Mission />
-      <Closing />
     </div>
   );
 }
