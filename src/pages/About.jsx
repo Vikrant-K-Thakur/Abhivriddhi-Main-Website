@@ -1,466 +1,372 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-/* ─── theme tokens matching main site ─── */
 const T = {
   bg:          '#0a0d0f',
   bg2:         '#0f1316',
   surface:     '#131820',
-  surface2:    '#1a2030',
   accent:      '#b8cc8a',
+  accentHov:   '#cde09e',
   text:        '#e8e4dc',
   textMuted:   'rgba(232,228,220,0.55)',
   textDim:     'rgba(232,228,220,0.28)',
   border:      'rgba(184,204,138,0.12)',
-  borderSubtle:'rgba(255,255,255,0.06)',
+  borderSub:   'rgba(255,255,255,0.06)',
   fontSerif:   "'Cormorant Garamond', serif",
   fontSans:    "'DM Sans', sans-serif",
 };
 
-/* ─── Reveal wrapper ─── */
-function Reveal({ children, delay = 0, style = {} }) {
+function useReveal(threshold = 0.1) {
   const ref = useRef(null);
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setTimeout(() => el.classList.add('ab-visible'), delay);
-          obs.unobserve(el);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { e.target.classList.add('ab-on'); obs.unobserve(e.target); }
+    }, { threshold });
+    if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, [delay]);
-  return (
-    <div ref={ref} className="ab-reveal" style={style}>
-      {children}
-    </div>
-  );
+  }, []);
+  return ref;
 }
 
-function Rule() {
-  return <div style={{ height: '1px', background: T.borderSubtle }} />;
-}
-
-function Label({ children }) {
+function AnimHeading() {
+  const lines = [
+    { text: 'Who We', accent: false },
+    { text: 'Are.',   accent: true  },
+  ];
+  let delay = 0.12;
   return (
-    <span style={{
-      fontFamily: T.fontSans,
-      fontWeight: 400,
-      fontSize: '0.68rem',
-      letterSpacing: '0.3em',
-      textTransform: 'uppercase',
-      color: T.accent,
-    }}>
-      {children}
-    </span>
-  );
-}
-
-function SectionLabel({ children }) {
-  return (
-    <span style={{
-      fontFamily: T.fontSerif,
-      fontWeight: 400,
-      fontSize: '2rem',
-      letterSpacing: '0.05em',
-      color: T.accent,
-      display: 'block',
-    }}>
-      {children}
-    </span>
-  );
-}
-
-/* ─── Animated headline ─── */
-function AnimHeading({ lines, tag: Tag = 'h1', style = {}, baseDelay = 0.1 }) {
-  let delay = baseDelay;
-  return (
-    <Tag style={style} aria-label={lines.map(l => l.text).join(' ')}>
+    <h1 style={{
+      fontFamily: T.fontSerif, fontWeight: 300,
+      fontSize: 'clamp(64px,10vw,120px)',
+      lineHeight: 1.02, letterSpacing: '0.01em',
+      marginBottom: 0,
+    }} aria-label="Who We Are.">
       {lines.map((line, li) => (
         <span key={li} style={{ display: 'block' }}>
           {line.text.split('').map((ch, ci) => {
-            delay += 0.05;
+            delay += 0.055;
             const d = delay;
-            if (ch === ' ') return <span key={ci} className="ab-char-space" />;
+            if (ch === ' ') return <span key={ci} style={{ display: 'inline-block', width: '0.28em' }} />;
             return line.accent
-              ? <em key={ci} className="ab-char" style={{ animationDelay: `${d}s`, fontStyle: 'normal', color: 'transparent', WebkitTextStroke: `1px ${T.accent}` }}>{ch}</em>
+              ? <span key={ci} className="ab-char" style={{ animationDelay: `${d}s`, color: 'transparent', WebkitTextStroke: `1px ${T.accent}` }}>{ch}</span>
               : <span key={ci} className="ab-char" style={{ animationDelay: `${d}s` }}>{ch}</span>;
           })}
         </span>
       ))}
-    </Tag>
+    </h1>
   );
 }
 
-/* ─── HERO ─── */
+/* ── HERO ── */
 function Hero() {
   return (
     <section style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      padding: '0 4rem',
-      position: 'relative',
-      overflow: 'hidden',
-      background: '#0a0d0f',
+      minHeight: '100vh', display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      textAlign: 'center', padding: '120px 32px',
+      position: 'relative', overflow: 'hidden', background: T.bg,
     }}>
-      {/* Radial accent glow */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
-        background: 'radial-gradient(ellipse 70% 55% at 50% 40%, rgba(184,204,138,0.08) 0%, transparent 70%)',
-      }} />
-      {/* Grid lines */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-        maskImage: 'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)',
-      }} />
-      {/* Horizontal accent lines */}
-      <div style={{ position: 'absolute', top: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', zIndex: 0 }} />
-      <div style={{ position: 'absolute', bottom: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', zIndex: 0 }} />
+      <div style={{ position:'absolute', inset:0, pointerEvents:'none',
+        background:'radial-gradient(ellipse 70% 55% at 50% 40%, rgba(184,204,138,0.08) 0%, transparent 70%)' }} />
+      <div style={{ position:'absolute', inset:0, pointerEvents:'none',
+        backgroundImage:'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
+        backgroundSize:'80px 80px',
+        WebkitMaskImage:'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)',
+        maskImage:'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)' }} />
+      <div style={{ position:'absolute', top:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
+      <div style={{ position:'absolute', bottom:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
 
-      {/* CENTER — About Abhivriddhi headline */}
+      {/* Ghost Sanskrit text */}
       <div style={{
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        zIndex: 2,
-        textAlign: 'center',
-        gap: '1.2rem',
-      }}>
-        <Reveal>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '7px',
-            fontSize: '0.68rem',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: T.accent,
-            border: `1px solid ${T.accent}38`,
-            padding: '5px 14px',
-            borderRadius: '20px',
-            background: `${T.accent}12`,
-            fontFamily: T.fontSans,
-            fontWeight: 500,
-          }}>
-            <span style={{
-              width: '6px', height: '6px', borderRadius: '50%',
-              background: T.accent,
-              animation: 'ab-dot 2s ease-in-out infinite',
-              flexShrink: 0,
+        position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-55%)',
+        fontFamily: T.fontSerif, fontSize:'clamp(5rem,18vw,20rem)', fontWeight:300,
+        color:'transparent', WebkitTextStroke:`1px rgba(184,204,138,0.04)`,
+        whiteSpace:'nowrap', pointerEvents:'none', userSelect:'none', zIndex:0,
+      }}>अभिवृद्धि</div>
+
+      <div style={{ position:'relative', zIndex:2, display:'flex', flexDirection:'column', alignItems:'center', gap:'1.5rem' }}>
+        {/* Badge */}
+        <div style={{
+          display:'inline-flex', alignItems:'center', gap:7,
+          fontSize:'0.68rem', letterSpacing:'0.18em', textTransform:'uppercase',
+          color: T.accent, border:`1px solid ${T.accent}38`,
+          padding:'5px 14px', borderRadius:20, background:`${T.accent}12`,
+          fontFamily: T.fontSans, fontWeight:500,
+        }}>
+          <span style={{ width:6, height:6, borderRadius:'50%', background:T.accent, animation:'ab-dot 2s ease-in-out infinite' }} />
+          Student Training &amp; Development Club
+        </div>
+
+        <AnimHeading />
+
+        <p style={{
+          fontFamily: T.fontSans, fontSize:'0.95rem', lineHeight:1.9,
+          color: T.textMuted, maxWidth:500, margin:'0 auto',
+        }}>
+          A student-led community dedicated to transforming learners into industry-ready professionals through training, mentorship, and real-world experience.
+        </p>
+
+        <div style={{ display:'flex', gap:16, flexWrap:'wrap', justifyContent:'center', marginTop:8 }}>
+          <a href="#about-s" style={{
+            fontFamily: T.fontSans, fontSize:'0.8rem', fontWeight:500,
+            letterSpacing:'0.08em', color: T.bg, background: T.accent,
+            border:'none', borderRadius:8, padding:'12px 32px',
+            cursor:'pointer', textDecoration:'none',
+            transition:'background 0.3s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.background = T.accentHov}
+          onMouseLeave={e => e.currentTarget.style.background = T.accent}
+          >Learn More</a>
+          <a href="#vmo" style={{
+            fontFamily: T.fontSans, fontSize:'0.8rem', fontWeight:400,
+            color: T.textMuted, background:'transparent',
+            border:`1px solid ${T.borderSub}`, borderRadius:8,
+            padding:'12px 32px', cursor:'pointer', textDecoration:'none',
+            transition:'border-color 0.3s, color 0.3s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor=`${T.accent}50`; e.currentTarget.style.color=T.accent; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor=T.borderSub; e.currentTarget.style.color=T.textMuted; }}
+          >Our Mission</a>
+        </div>
+
+        <div style={{ display:'flex', alignItems:'center', gap:'0.8rem', marginTop:8 }}>
+          <div style={{ width:32, height:1, background:T.accent, opacity:0.4 }} />
+          <span style={{ fontFamily:T.fontSans, fontSize:'0.72rem', color:T.textDim, letterSpacing:'0.15em', textTransform:'uppercase' }}>Scroll to explore</span>
+          <div style={{ width:32, height:1, background:T.accent, opacity:0.4 }} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── STATS ── */
+function Stats() {
+  const ref = useRef(null);
+  const hasRun = useRef(false);
+  const stats = [
+    { target: 500, suffix: '+', label: 'Active Members' },
+    { target: 60,  suffix: '+', label: 'Events Hosted' },
+    { target: 3,   suffix: '+', label: 'Years of Impact' },
+    { target: 95,  suffix: '%', label: 'Satisfaction Rate' },
+  ];
+  const [counts, setCounts] = useState(stats.map(() => '0'));
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting || hasRun.current) return;
+      hasRun.current = true;
+      stats.forEach(({ target, suffix }, i) => {
+        const dur = 1800, start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          setCounts(prev => { const n = [...prev]; n[i] = Math.floor(eased * target) + suffix; return n; });
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.4 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section ref={ref} style={{
+      padding:'4rem 4rem', background:`rgba(184,204,138,0.02)`,
+      borderTop:`1px solid ${T.border}`, borderBottom:`1px solid ${T.border}`,
+    }}>
+      <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'1.5rem' }}
+        className="ab-stat-grid">
+        {stats.map((s, i) => (
+          <div key={s.label} className="ab-reveal ab-stat-card" style={{ transitionDelay:`${i*80}ms` }}>
+            <div style={{
+              fontFamily: T.fontSerif, fontWeight:300,
+              fontSize:'clamp(2.2rem,4vw,3.2rem)', color: T.accent,
+              lineHeight:1, marginBottom:'0.5rem', letterSpacing:'-0.02em',
+            }}>{counts[i]}</div>
+            <div style={{
+              fontFamily: T.fontSans, fontSize:'0.66rem',
+              letterSpacing:'0.2em', textTransform:'uppercase',
+              color: T.textDim,
+            }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── ABOUT SPLIT ── */
+function AboutSplit() {
+  const ref = useReveal();
+  const ref2 = useReveal();
+  return (
+    <section id="about-s" style={{
+      padding:'7rem 4rem', borderBottom:`1px solid ${T.borderSub}`,
+    }}>
+      <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'5rem', alignItems:'center' }}
+        className="ab-split-grid">
+        {/* Visual left */}
+        <div ref={ref} className="ab-reveal ab-rl" style={{
+          borderRadius:22, overflow:'hidden', position:'relative',
+          aspectRatio:'4/3',
+          background:`linear-gradient(135deg, rgba(184,204,138,0.07) 0%, rgba(184,204,138,0.02) 100%)`,
+          border:`1px solid ${T.border}`,
+          display:'flex', alignItems:'center', justifyContent:'center',
+        }}>
+          <div style={{ position:'absolute', inset:0,
+            backgroundImage:`linear-gradient(rgba(184,204,138,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,204,138,0.04) 1px, transparent 1px)`,
+            backgroundSize:'32px 32px' }} />
+          {[200,130,70].map((s,i) => (
+            <div key={s} style={{
+              position:'absolute', top:'50%', left:'50%',
+              transform:'translate(-50%,-50%)',
+              width:s, height:s, borderRadius:'50%',
+              border:`1px solid rgba(184,204,138,${0.14 - i*0.03})`,
+              background: i===2 ? 'rgba(184,204,138,0.08)' : 'transparent',
             }} />
-            About Abhivriddhi
+          ))}
+          <div style={{ position:'relative', zIndex:2, textAlign:'center' }}>
+            <div style={{ fontFamily:T.fontSerif, fontSize:'4rem', fontWeight:300, color:'rgba(184,204,138,0.55)' }}>A</div>
+            <div style={{ fontFamily:T.fontSans, fontSize:'0.6rem', letterSpacing:'0.3em', textTransform:'uppercase', color:'rgba(184,204,138,0.4)', marginTop:'0.4rem' }}>Abhivriddhi</div>
           </div>
-        </Reveal>
-        <Reveal delay={150}>
-          <AnimHeading
-            lines={[{ text: 'Who We' }, { text: 'Are.', accent: true }]}
-            style={{
-              fontFamily: T.fontSerif,
-              fontWeight: 300,
-              fontSize: 'clamp(64px,10vw,120px)',
-              lineHeight: 1.02,
-              letterSpacing: '0.01em',
-              color: T.text,
-            }}
-          />
-        </Reveal>
-        <Reveal delay={250}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginTop: '0.5rem' }}>
-            <div style={{ width: '32px', height: '1px', background: T.accent, opacity: 0.5 }} />
-            <span style={{ fontFamily: T.fontSans, fontSize: '0.75rem', color: T.textDim, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Scroll to explore</span>
-            <div style={{ width: '32px', height: '1px', background: T.accent, opacity: 0.5 }} />
-          </div>
-        </Reveal>
-      </div>
+        </div>
 
+        {/* Text right */}
+        <div ref={ref2} className="ab-reveal ab-rr">
+          <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'1rem' }}>About Abhivriddhi</span>
+          <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(1.9rem,3.8vw,2.8rem)', lineHeight:1.18, color:T.text, marginBottom:'1.5rem' }}>
+            Where Potential Meets <em style={{ color:T.accent, fontStyle:'italic' }}>Purpose.</em>
+          </h2>
+          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.4rem' }}>
+            Abhivriddhi — meaning <strong style={{ color:'rgba(232,228,220,0.78)', fontWeight:400 }}>growth and prosperity</strong> in Sanskrit — is a student-run club built on one belief: every student holds extraordinary potential when given the right environment to flourish.
+          </p>
+          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.8rem' }}>
+            We bridge the gap between classroom knowledge and industry readiness through structured training, peer mentorship, and a culture where growth is collective.
+          </p>
+          <div style={{ borderLeft:`2px solid ${T.accent}`, padding:'1rem 1.3rem', background:`rgba(184,204,138,0.05)`, borderRadius:'0 10px 10px 0' }}>
+            <p style={{ fontFamily:T.fontSerif, fontStyle:'italic', fontWeight:300, fontSize:'1rem', color:'rgba(232,228,220,0.65)', lineHeight:1.6 }}>
+              "Growth is not a destination — it is our default state."
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
 
-/* ─── ABOUT SECTION ─── */
-function AboutSection() {
+/* ── VMO CARDS ── */
+function VMO() {
+  const hRef = useReveal();
+  const cards = [
+    { num:'01', title:'Vision', body:'To be the most impactful student development community in India — where every student discovers their potential and emerges as a confident, skilled professional.' },
+    { num:'02', title:'Mission', body:'To deliver transformative learning experiences through hands-on training, expert mentorship, and a culture of excellence — equipping students with skills and network to thrive.' },
+    { num:'03', title:'Objectives', body:'Connecting students with industry professionals, hosting skill-building programs, fostering leadership, and building a community committed to continuous growth.' },
+  ];
   return (
-    <section style={{
-      padding: '6rem 4rem',
-      borderTop: `1px solid ${T.borderSubtle}`,
-      position: 'relative',
-    }}>
-      <div style={{
-        display: 'grid', gridTemplateColumns: '240px 1fr',
-        gap: '6rem', maxWidth: '1200px', margin: '0 auto', alignItems: 'start',
-      }}>
-        <Reveal>
-          <div style={{ position: 'sticky', top: '7rem' }}>
-            <SectionLabel>About</SectionLabel>
-            <div style={{ width: '32px', height: '1px', background: T.accent, marginTop: '1rem' }} />
-          </div>
-        </Reveal>
-
-        <div>
-          <Reveal>
-            <h2 style={{
-              fontFamily: T.fontSerif, fontWeight: 300,
-              fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.2,
-              color: T.text, marginBottom: '1.5rem', letterSpacing: '-0.01em',
-            }}>
-              A space where potential<br />
-              finds its <em style={{ color: T.accent, fontStyle: 'italic' }}>direction.</em>
-            </h2>
-          </Reveal>
-          <Reveal delay={100}>
-            <p style={{
-              fontFamily: T.fontSans, fontWeight: 300,
-              fontSize: '0.95rem', lineHeight: 1.9,
-              color: T.textMuted, maxWidth: '600px', marginBottom: '3rem',
-            }}>
-              Abhivriddhi — meaning growth and prosperity — is a student-led club bridging the gap between academic learning and industry readiness through workshops, mentorship, and real-world experiences.
-            </p>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <Rule />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', marginTop: '2rem' }}>
-              {[
-                { title: 'Technical Training', desc: 'Workshops aligned with industry standards.' },
-                { title: 'Leadership', desc: 'Programs that build communication and team skills.' },
-                { title: 'Career Mentorship', desc: 'Connecting students with professionals and alumni.' },
-              ].map((p, i) => (
-                <div key={p.title} style={{
-                  padding: '1.5rem',
-                  borderLeft: `1px solid ${T.borderSubtle}`,
-                  borderRight: i === 2 ? `1px solid ${T.borderSubtle}` : 'none',
-                  paddingLeft: i === 0 ? '0' : '1.5rem',
-                  borderLeftWidth: i === 0 ? '0' : '1px',
-                }}>
-                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1rem', color: T.text, marginBottom: '0.4rem' }}>{p.title}</div>
-                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: T.textDim }}>{p.desc}</p>
-                </div>
-              ))}
+    <section id="vmo" style={{ padding:'7rem 4rem', borderBottom:`1px solid ${T.borderSub}`, background: T.bg2 }}>
+      <div ref={hRef} className="ab-reveal" style={{ textAlign:'center', marginBottom:'4rem' }}>
+        <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'0.8rem' }}>What Drives Us</span>
+        <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(2rem,4vw,3rem)', color:T.text, letterSpacing:'-0.02em' }}>
+          Our Vision, Mission &amp; <em style={{ color:T.accent, fontStyle:'italic' }}>Objectives</em>
+        </h2>
+      </div>
+      <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}
+        className="ab-vmo-grid">
+        {cards.map((c, i) => {
+          const r = useReveal();
+          return (
+            <div key={c.num} ref={r} className="ab-reveal ab-vmo-card" style={{ transitionDelay:`${i*100}ms` }}>
+              <div style={{
+                width:44, height:44, background:`rgba(184,204,138,0.1)`,
+                border:`1px solid rgba(184,204,138,0.2)`, borderRadius:12,
+                display:'flex', alignItems:'center', justifyContent:'center',
+                fontFamily:T.fontSerif, fontSize:'0.95rem', color:T.accent,
+                marginBottom:'1.5rem',
+              }}>{c.num}</div>
+              <div style={{ fontFamily:T.fontSerif, fontWeight:400, fontSize:'1.4rem', color:T.text, marginBottom:'0.8rem' }}>{c.title}</div>
+              <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.83rem', lineHeight:1.88, color:T.textMuted }}>{c.body}</p>
             </div>
-          </Reveal>
-        </div>
+          );
+        })}
       </div>
     </section>
   );
 }
 
-/* ─── VISION ─── */
-function Vision() {
+/* ── MARQUEE ── */
+function Marquee() {
+  const words = ['Training','Mentorship','Leadership','Innovation','Excellence','Community','Growth','Purpose'];
   return (
-    <section id="vision" style={{
-      padding: '6rem 4rem',
-      borderTop: `1px solid ${T.borderSubtle}`,
-      position: 'relative', overflow: 'hidden',
-    }}>
-      <div style={{
-        position: 'absolute', right: '-2rem', top: '50%',
-        transform: 'translateY(-50%)',
-        fontFamily: T.fontSerif,
-        fontSize: 'clamp(16rem, 28vw, 30rem)', fontWeight: 300,
-        color: 'transparent', WebkitTextStroke: `1px rgba(184,204,138,0.04)`,
-        lineHeight: 1, userSelect: 'none', pointerEvents: 'none',
-      }}>01</div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '6rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Reveal>
-          <div style={{ position: 'sticky', top: '7rem' }}>
-            <SectionLabel>Vision</SectionLabel>
-            <div style={{ width: '32px', height: '1px', background: T.accent, marginTop: '1rem' }} />
-          </div>
-        </Reveal>
-
-        <div>
-          <Reveal>
-            <p style={{
-              fontFamily: T.fontSerif, fontWeight: 300, fontStyle: 'italic',
-              fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.5,
-              color: T.textDim, marginBottom: '2rem',
-              letterSpacing: '0.01em', maxWidth: '720px',
-            }}>
-              "To be the most impactful student development community in India."
-            </p>
-          </Reveal>
-          <Reveal delay={120}>
-            <p style={{
-              fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
-              lineHeight: 1.9, color: T.textMuted, maxWidth: '600px', marginBottom: '3rem',
-            }}>
-              We envision a future where every student has access to the tools, mentors, and community needed to bridge the gap between academic preparation and professional readiness.
-            </p>
-          </Reveal>
-
-          <Reveal delay={240}>
-            {[
-              { num: '01', heading: 'Inclusive Excellence', body: 'Every student can compete, contribute, and excel on equal footing.' },
-              { num: '02', heading: 'Industry Alignment', body: 'Programs that stay current, rigorous, and reflective of real-world demands.' },
-              { num: '03', heading: 'Lasting Community', body: 'Bonds and networks that extend far beyond graduation.' },
-            ].map((v) => (
-              <div key={v.num} style={{
-                display: 'grid', gridTemplateColumns: '60px 1fr',
-                gap: '2rem', padding: '1.5rem 0',
-                borderTop: `1px solid ${T.borderSubtle}`, alignItems: 'start',
-              }}>
-                <span style={{ fontFamily: T.fontSerif, fontWeight: 300, fontSize: '1rem', color: T.accent, paddingTop: '0.15rem' }}>{v.num}</span>
-                <div>
-                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1.1rem', color: T.text, marginBottom: '0.3rem' }}>{v.heading}</div>
-                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.8, color: T.textMuted }}>{v.body}</p>
-                </div>
-              </div>
-            ))}
-            <div style={{ height: '1px', background: T.borderSubtle }} />
-          </Reveal>
-        </div>
+    <div style={{ borderTop:`1px solid ${T.border}`, borderBottom:`1px solid ${T.border}`, padding:'1rem 0', overflow:'hidden', background:`rgba(184,204,138,0.02)` }}>
+      <div style={{ display:'flex', gap:'2.5rem', width:'max-content', animation:'ab-ticker 30s linear infinite' }}>
+        {[...words,...words].map((w, i) => (
+          <span key={i} style={{ fontFamily:T.fontSerif, fontSize:'0.95rem', letterSpacing:'0.1em', color:`rgba(232,228,220,${i%2===0?0.4:0.2})`, whiteSpace:'nowrap' }}>
+            {w}<span style={{ marginLeft:'2.5rem', color:'rgba(184,204,138,0.22)' }}>·</span>
+          </span>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
 
-/* ─── MISSION ─── */
-function Mission() {
-  return (
-    <section id="mission" style={{
-      padding: '6rem 4rem',
-      borderTop: `1px solid ${T.borderSubtle}`,
-      background: T.bg2,
-      position: 'relative', overflow: 'hidden',
-    }}>
-      <div style={{
-        position: 'absolute', right: '-2rem', top: '50%',
-        transform: 'translateY(-50%)',
-        fontFamily: T.fontSerif,
-        fontSize: 'clamp(16rem, 28vw, 30rem)', fontWeight: 300,
-        color: 'transparent', WebkitTextStroke: `1px rgba(184,204,138,0.04)`,
-        lineHeight: 1, userSelect: 'none', pointerEvents: 'none',
-      }}>02</div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '6rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Reveal>
-          <div style={{ position: 'sticky', top: '7rem' }}>
-            <SectionLabel>Mission</SectionLabel>
-            <div style={{ width: '32px', height: '1px', background: T.accent, marginTop: '1rem' }} />
-          </div>
-        </Reveal>
-
-        <div>
-          <Reveal>
-            <p style={{
-              fontFamily: T.fontSerif, fontWeight: 300, fontStyle: 'italic',
-              fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.5,
-              color: T.textDim, marginBottom: '2rem', maxWidth: '720px',
-            }}>
-              "To cultivate a learning ecosystem that equips students with excellence, acumen, and purpose."
-            </p>
-          </Reveal>
-          <Reveal delay={120}>
-            <p style={{
-              fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.95rem',
-              lineHeight: 1.9, color: T.textMuted, maxWidth: '600px', marginBottom: '3rem',
-            }}>
-              Every program we run is crafted with intention — producing measurable growth in our members' skills, confidence, and career prospects.
-            </p>
-          </Reveal>
-
-          <Reveal delay={240}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-              {[
-                { title: 'Hands-On Training', body: 'Workshops and project-based learning that builds real competence.' },
-                { title: 'Mentorship', body: 'One-on-one guidance from industry professionals and alumni.' },
-                { title: 'Competitions', body: 'Hackathons and challenges that sharpen problem-solving skills.' },
-                { title: 'Community', body: 'A culture of shared ambition and mutual growth.' },
-              ].map((m, i) => (
-                <div key={m.title} style={{
-                  padding: '1.8rem',
-                  borderTop: `1px solid ${T.borderSubtle}`,
-                  borderLeft: i % 2 !== 0 ? `1px solid ${T.borderSubtle}` : 'none',
-                  borderBottom: i < 2 ? `1px solid ${T.borderSubtle}` : 'none',
-                  paddingLeft: i % 2 === 0 ? '0' : '1.8rem',
-                }}>
-                  <div style={{ fontFamily: T.fontSerif, fontWeight: 400, fontSize: '1.1rem', color: T.text, marginBottom: '0.4rem' }}>{m.title}</div>
-                  <p style={{ fontFamily: T.fontSans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.75, color: T.textMuted }}>{m.body}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── SCOPED STYLES ─── */
 const aboutStyles = `
-  .ab-reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
-  }
-  .ab-reveal.ab-visible { opacity: 1; transform: none; }
+  @keyframes ab-charIn { to { opacity:1; transform:translateY(0); } }
+  @keyframes ab-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.65)} }
+  @keyframes ab-ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
   .ab-char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(28px);
-    animation: ab-chin 0.5s ease forwards;
+    display:inline-block; opacity:0; transform:translateY(60%);
+    animation: ab-charIn 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
   }
-  .ab-char-space { display: inline-block; width: 0.28em; }
-  @keyframes ab-chin { to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes ab-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.65)} }
-
-  .ab-btn-primary {    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    color: #0a0d0f;
-    background: #b8cc8a;
-    padding: 0.9rem 2rem;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    display: inline-block;
+  .ab-reveal {
+    opacity:0; transform:translateY(28px);
+    transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
   }
-  .ab-btn-primary:hover { background: #cde09e; }
+  .ab-rl { transform: translateX(-26px); }
+  .ab-rr { transform: translateX(26px); }
+  .ab-reveal.ab-on { opacity:1; transform:none; }
 
-  .ab-btn-secondary {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    color: rgba(232,228,220,0.6);
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 0.9rem 2rem;
-    text-decoration: none;
-    transition: border-color 0.3s ease, color 0.3s ease;
-    display: inline-block;
+  .ab-stat-card {
+    background: rgba(184,204,138,0.04);
+    border: 1px solid rgba(184,204,138,0.1);
+    border-radius: 16px; padding: 2.2rem 1.8rem; text-align:center;
+    transition: border-color .35s, background .35s, transform .35s;
+    cursor:default;
   }
-  .ab-btn-secondary:hover { border-color: rgba(184,204,138,0.4); color: #b8cc8a; }
+  .ab-stat-card:hover { border-color:rgba(184,204,138,0.28); background:rgba(184,204,138,0.07); transform:translateY(-4px); }
 
-  @media (max-width: 900px) {
-    #about-page section { padding: 5rem 2rem !important; }
-    #about-page .ab-two-col { grid-template-columns: 1fr !important; }
-    #about-page h1 { font-size: clamp(3rem, 12vw, 5rem) !important; }
+  .ab-vmo-card {
+    background: rgba(184,204,138,0.04);
+    border: 1px solid rgba(184,204,138,0.1);
+    border-radius: 20px; padding: 2.4rem 2rem;
+    transition: border-color .35s, background .35s, transform .35s;
+    cursor:default;
+  }
+  .ab-vmo-card:hover { border-color:rgba(184,204,138,0.3); background:rgba(184,204,138,0.07); transform:translateY(-5px); }
+
+  @media (max-width:900px) {
+    .ab-split-grid { grid-template-columns:1fr !important; }
+    .ab-vmo-grid   { grid-template-columns:1fr !important; }
+    .ab-stat-grid  { grid-template-columns:1fr 1fr !important; }
   }
 `;
 
 export default function About() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('ab-on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.ab-reveal').forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <div id="about-page" style={{ background: T.bg, minHeight: '100vh', color: T.text }}>
+    <div style={{ background: T.bg, minHeight:'100vh', color: T.text }}>
       <style>{aboutStyles}</style>
       <Hero />
-      <AboutSection />
-      <Vision />
-      <Mission />
+      <AboutSplit />
+      <VMO />
     </div>
   );
 }
