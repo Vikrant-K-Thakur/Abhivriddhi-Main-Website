@@ -39,7 +39,7 @@ function AnimHeading() {
       fontSize: 'clamp(64px,10vw,120px)',
       lineHeight: 1.02, letterSpacing: '0.01em',
       marginBottom: 0,
-    }} aria-label="Who We Are.">
+    }} aria-label="Who We Are">
       {lines.map((line, li) => (
         <span key={li} style={{ display: 'block' }}>
           {line.text.split('').map((ch, ci) => {
@@ -74,14 +74,6 @@ function Hero() {
         maskImage:'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)' }} />
       <div style={{ position:'absolute', top:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
       <div style={{ position:'absolute', bottom:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
-
-      {/* Ghost Sanskrit text */}
-      <div style={{
-        position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-55%)',
-        fontFamily: T.fontSerif, fontSize:'clamp(5rem,18vw,20rem)', fontWeight:300,
-        color:'transparent', WebkitTextStroke:`1px rgba(184,204,138,0.04)`,
-        whiteSpace:'nowrap', pointerEvents:'none', userSelect:'none', zIndex:0,
-      }}>अभिवृद्धि</div>
 
       <div style={{ position:'relative', zIndex:2, display:'flex', flexDirection:'column', alignItems:'center', gap:'1.5rem' }}>
         {/* Badge */}
