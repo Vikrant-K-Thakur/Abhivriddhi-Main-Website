@@ -1,3 +1,100 @@
+/* ============================================================
+   TEAM PAGE — COMING SOON
+   The full team page code is commented out below.
+   Uncomment when team data is ready.
+   ============================================================ */
+
+export default function Team() {
+  return (
+    <div style={{
+      background: '#0a0d0f',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: "'DM Sans', sans-serif",
+      color: '#e8e4dc',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      {/* Same hero background as Events page */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'radial-gradient(ellipse 70% 55% at 50% 40%, rgba(184,204,138,0.08) 0%, transparent 70%)',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
+        WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)',
+        maskImage: 'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)',
+      }} />
+      <div style={{ position: 'absolute', top: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
+      <div style={{ position: 'absolute', bottom: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
+
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 32px' }}>
+
+        {/* Badge */}
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 7,
+          fontSize: '0.68rem', letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: '#b8cc8a', border: '1px solid rgba(184,204,138,0.22)',
+          padding: '5px 14px', borderRadius: 20, marginBottom: 32,
+          background: 'rgba(184,204,138,0.08)',
+        }}>
+          <span style={{
+            width: 6, height: 6, borderRadius: '50%', background: '#b8cc8a',
+            animation: 'teamDot 2s ease-in-out infinite',
+          }} />
+          Abhivriddhi · The People
+        </div>
+
+        {/* Heading */}
+        <h1 style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontWeight: 300,
+          fontSize: 'clamp(64px,10vw,120px)',
+          lineHeight: 1.02,
+          letterSpacing: '0.01em',
+          marginBottom: 32,
+        }}>
+          <span style={{ display: 'block', color: '#e8e4dc' }}>Coming</span>
+          <span style={{ display: 'block', color: 'transparent', WebkitTextStroke: '1px #b8cc8a' }}>Soon</span>
+        </h1>
+
+        {/* Divider */}
+        <div style={{
+          width: 60, height: 1, margin: '0 auto 32px',
+          background: 'linear-gradient(90deg, transparent, #b8cc8a, transparent)',
+        }} />
+
+        {/* Sub text */}
+        <p style={{
+          fontSize: '0.9rem', color: '#4a5260',
+          letterSpacing: '0.05em', maxWidth: 420, margin: '0 auto',
+          lineHeight: 1.75,
+        }}>
+          We're putting together our team page. Check back soon to meet the minds and hearts behind Abhivriddhi.
+        </p>
+
+      </div>
+
+      <style>{`
+        @keyframes teamDot {
+          0%,100% { opacity:1; transform:scale(1); }
+          50% { opacity:0.35; transform:scale(0.65); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+/* ============================================================
+   ORIGINAL TEAM PAGE CODE — COMMENTED OUT
+   Uncomment below and remove the export above when ready.
+   ============================================================
+
 import { useEffect, useRef, useState } from 'react';
 
 const styles = `
@@ -21,37 +118,25 @@ const styles = `
   .t-root * { box-sizing: border-box; margin: 0; padding: 0; }
   .t-root { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  .t-stars {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 70% 10%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 42% 58%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 85% 45%, rgba(255,255,255,0.45) 0%, transparent 100%),
-      radial-gradient(1px 1px at  8% 75%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 58% 88%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 48% 12%, rgba(184,204,138,0.4) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 78% 82%, rgba(184,204,138,0.3) 0%, transparent 100%);
-  }
-
-  /* ── HERO ── */
   .t-hero {
     position: relative; z-index: 1;
     text-align: center; padding: 110px 24px 64px;
+    background: #0a0d0f;
   }
   .t-hero::before {
     content: ''; position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 700px; height: 350px;
-    background: radial-gradient(ellipse at center, rgba(184,204,138,0.07) 0%, transparent 65%);
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(184,204,138,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
   .t-hero-grid {
     position: absolute; inset: 0; pointer-events: none;
     background-image:
-      linear-gradient(rgba(184,204,138,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(184,204,138,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%);
   }
 
   .t-badge {
@@ -69,10 +154,10 @@ const styles = `
 
   .t-hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    font-size: clamp(64px,10vw,120px);
+    font-weight: 300; line-height: 1.02; letter-spacing: 0.01em;
   }
-  .t-hero-title em { color: var(--accent); font-style: italic; }
+  .t-hero-title em { color: transparent; font-style: normal; -webkit-text-stroke: 1px #b8cc8a; }
   .t-char { display: inline-block; opacity: 0; transform: translateY(28px); animation: tchin 0.5s ease forwards; }
   .t-char-space { display: inline-block; width: 0.28em; }
   @keyframes tchin { to { opacity: 1; transform: translateY(0); } }
@@ -99,7 +184,6 @@ const styles = `
     margin: 0 auto 72px;
   }
 
-  /* ── CORE LEADERSHIP ── */
   .t-section {
     position: relative; z-index: 1;
     max-width: 1100px; margin: 0 auto;
@@ -116,7 +200,6 @@ const styles = `
     background: linear-gradient(to right, var(--border), transparent);
   }
 
-  /* Leadership row — horizontal cards */
   .t-lead-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
     margin-bottom: 16px;
@@ -177,7 +260,6 @@ const styles = `
     font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.04em;
   }
 
-  /* ── DOMAIN TEAMS ── */
   .t-domains {
     position: relative; z-index: 1;
     max-width: 1100px; margin: 0 auto;
@@ -245,7 +327,6 @@ const styles = `
     letter-spacing: 0.06em; text-transform: uppercase;
   }
 
-  /* ── REVEAL ── */
   .t-rev { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .t-rev.visible { opacity: 1; transform: none; }
 `;
@@ -421,26 +502,24 @@ export default function Team() {
   return (
     <div className="t-root">
       <style>{styles}</style>
-      <div className="t-stars" />
 
-      {/* HERO */}
       <div className="t-hero">
         <div className="t-hero-grid" />
+        <div style={{ position:'absolute', top:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', pointerEvents:'none' }} />
+        <div style={{ position:'absolute', bottom:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', pointerEvents:'none' }} />
         <div className="t-badge"><span className="t-badge-dot" />The People</div>
         <AnimTitle />
         <p className="t-hero-sub">The minds and hearts behind Abhivriddhi</p>
         <div className="t-hero-meta">
           <span className="t-meta-dot" />
-          Core Committee &amp; Domain Teams · 2025–26
+          Core Committee & Domain Teams · 2025–26
         </div>
       </div>
 
       <div className="t-divider" />
 
-      {/* CORE LEADERSHIP */}
       <CoreSection />
 
-      {/* DOMAIN TEAMS */}
       <div className="t-domains">
         <div className="t-section-label">Domain Teams</div>
         {domains.map((d, i) => <DomainBlock key={i} domain={d} />)}
@@ -448,3 +527,5 @@ export default function Team() {
     </div>
   );
 }
+
+============================================================ */

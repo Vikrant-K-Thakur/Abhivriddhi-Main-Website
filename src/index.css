@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
+@font-face {
+  font-family: 'Saman';
+  src: url('/src/fonts/SAMAN___.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --bg: #0a0d0f;
   --bg2: #0f1316;
@@ -82,13 +89,18 @@ nav.scrolled {
   border-bottom: 1px solid var(--border-subtle);
 }
 .nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-family: 'Saman', serif;
+  font-size: 2.5rem;
   font-weight: 400;
-  font-style: italic;
   color: var(--text);
   letter-spacing: 0.04em;
   text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.nav-logo:hover {
+  color: #04bd3b;
+  transform: scale(1.05);
 }
 .nav-links {
   display: flex;
@@ -97,7 +109,7 @@ nav.scrolled {
 }
 .nav-links a {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--text-muted);

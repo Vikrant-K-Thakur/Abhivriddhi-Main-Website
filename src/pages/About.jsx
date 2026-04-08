@@ -87,7 +87,7 @@ function AnimHeading({ lines, tag: Tag = 'h1', style = {}, baseDelay = 0.1 }) {
             const d = delay;
             if (ch === ' ') return <span key={ci} className="ab-char-space" />;
             return line.accent
-              ? <em key={ci} className="ab-char" style={{ animationDelay: `${d}s`, fontStyle: 'italic', color: T.accent }}>{ch}</em>
+              ? <em key={ci} className="ab-char" style={{ animationDelay: `${d}s`, fontStyle: 'normal', color: 'transparent', WebkitTextStroke: `1px ${T.accent}` }}>{ch}</em>
               : <span key={ci} className="ab-char" style={{ animationDelay: `${d}s` }}>{ch}</span>;
           })}
         </span>
@@ -107,41 +107,23 @@ function Hero() {
       padding: '0 4rem 5rem',
       position: 'relative',
       overflow: 'hidden',
+      background: '#0a0d0f',
     }}>
-      {/* Stars background — same as Events page */}
+      {/* Radial accent glow */}
       <div style={{
-        position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0,
-        background: `
-          radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.6) 0%, transparent 100%),
-          radial-gradient(1px 1px at 72% 8%,  rgba(255,255,255,0.4) 0%, transparent 100%),
-          radial-gradient(1px 1px at 40% 55%, rgba(255,255,255,0.3) 0%, transparent 100%),
-          radial-gradient(1px 1px at 88% 43%, rgba(255,255,255,0.5) 0%, transparent 100%),
-          radial-gradient(1px 1px at  5% 78%, rgba(255,255,255,0.3) 0%, transparent 100%),
-          radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.45) 0%, transparent 100%),
-          radial-gradient(1px 1px at 30% 35%, rgba(255,255,255,0.25) 0%, transparent 100%),
-          radial-gradient(1px 1px at 95% 70%, rgba(255,255,255,0.4)  0%, transparent 100%),
-          radial-gradient(1px 1px at 55% 28%, rgba(255,255,255,0.35) 0%, transparent 100%),
-          radial-gradient(1px 1px at 18% 62%, rgba(255,255,255,0.3)  0%, transparent 100%),
-          radial-gradient(1.5px 1.5px at 50% 15%, rgba(184,204,138,0.4) 0%, transparent 100%),
-          radial-gradient(1.5px 1.5px at 80% 85%, rgba(184,204,138,0.3) 0%, transparent 100%),
-          radial-gradient(1.5px 1.5px at 22% 90%, rgba(184,204,138,0.2) 0%, transparent 100%)
-        `,
+        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
+        background: 'radial-gradient(ellipse 70% 55% at 50% 40%, rgba(184,204,138,0.08) 0%, transparent 70%)',
       }} />
-      {/* Hero radial glow */}
+      {/* Grid lines */}
       <div style={{
-        position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-        width: '700px', height: '350px', pointerEvents: 'none',
-        background: 'radial-gradient(ellipse at center, rgba(184,204,138,0.07) 0%, transparent 65%)',
+        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
+        maskImage: 'radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%)',
       }} />
-      {/* Grid overlay */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: `
-          linear-gradient(rgba(184,204,138,0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(184,204,138,0.03) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px',
-      }} />
+      {/* Horizontal accent lines */}
+      <div style={{ position: 'absolute', top: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', zIndex: 0 }} />
+      <div style={{ position: 'absolute', bottom: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', zIndex: 0 }} />
 
       {/* CENTER — About Abhivriddhi headline */}
       <div style={{
@@ -186,9 +168,9 @@ function Hero() {
             style={{
               fontFamily: T.fontSerif,
               fontWeight: 300,
-              fontSize: 'clamp(3rem, 6vw, 6rem)',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
+              fontSize: 'clamp(64px,10vw,120px)',
+              lineHeight: 1.02,
+              letterSpacing: '0.01em',
               color: T.text,
             }}
           />

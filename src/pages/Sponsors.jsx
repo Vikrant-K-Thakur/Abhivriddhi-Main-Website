@@ -20,37 +20,26 @@ const styles = `
   .s-root * { box-sizing: border-box; margin: 0; padding: 0; }
   .s-root { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  .s-stars {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 72%  8%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 40% 55%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 88% 43%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at  5% 78%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.45) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 50% 15%, rgba(184,204,138,0.4) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 80% 85%, rgba(184,204,138,0.3) 0%, transparent 100%);
-  }
-
   /* ── HERO ── */
   .s-hero {
     position: relative; z-index: 1;
     text-align: center; padding: 110px 24px 64px;
+    background: #0a0d0f;
   }
   .s-hero::before {
     content: ''; position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 700px; height: 350px;
-    background: radial-gradient(ellipse at center, rgba(184,204,138,0.07) 0%, transparent 65%);
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(184,204,138,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
   .s-hero-grid {
     position: absolute; inset: 0; pointer-events: none;
     background-image:
-      linear-gradient(rgba(184,204,138,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(184,204,138,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%);
   }
 
   .s-badge {
@@ -68,10 +57,10 @@ const styles = `
 
   .s-hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    font-size: clamp(64px,10vw,120px);
+    font-weight: 300; line-height: 1.02; letter-spacing: 0.01em;
   }
-  .s-hero-title em { color: var(--accent); font-style: italic; }
+  .s-hero-title em { color: transparent; font-style: normal; -webkit-text-stroke: 1px #b8cc8a; }
   .s-char { display: inline-block; opacity: 0; transform: translateY(28px); animation: schin 0.5s ease forwards; }
   .s-char-space { display: inline-block; width: 0.28em; }
   @keyframes schin { to { opacity: 1; transform: translateY(0); } }
@@ -285,11 +274,12 @@ export default function Sponsors() {
   return (
     <div className="s-root">
       <style>{styles}</style>
-      <div className="s-stars" />
 
       {/* HERO */}
       <div className="s-hero">
         <div className="s-hero-grid" />
+        <div style={{ position:'absolute', top:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', pointerEvents:'none' }} />
+        <div style={{ position:'absolute', bottom:'20%', left:0, right:0, height:1, background:'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)', pointerEvents:'none' }} />
         <div className="s-badge"><span className="s-badge-dot" />Our Partners</div>
         <AnimTitle />
         <p className="s-hero-sub">Organizations that believe in our mission and make it possible</p>
