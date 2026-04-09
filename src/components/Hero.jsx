@@ -172,7 +172,7 @@ export default function Hero() {
           </video>
           <div className="hero-video-glow" />
         </div>
-      </div>
+                                                                                                                  </div>
     </section>
   );
 }

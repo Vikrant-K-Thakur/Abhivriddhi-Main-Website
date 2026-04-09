@@ -6,13 +6,13 @@ const T = {
   surface:     '#131820',
   accent:      '#b8cc8a',
   accentHov:   '#cde09e',
-  text:        '#e8e4dc',
-  textMuted:   'rgba(232,228,220,0.55)',
-  textDim:     'rgba(232,228,220,0.28)',
+  text:        '#ffffff',
+  textMuted:   'rgba(255,255,255,0.75)',
+  textDim:     'rgba(255,255,255,0.45)',
   border:      'rgba(184,204,138,0.12)',
   borderSub:   'rgba(255,255,255,0.06)',
   fontSerif:   "'Cormorant Garamond', serif",
-  fontSans:    "'DM Sans', sans-serif",
+  fontSans:    "'Montserrat', sans-serif",
 };
 
 function useReveal(threshold = 0.1) {
@@ -62,7 +62,7 @@ function Hero() {
     <section style={{
       minHeight: '100vh', display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      textAlign: 'center', padding: '120px 32px',
+      textAlign: 'center', padding: 'clamp(80px,12vw,120px) clamp(16px,4vw,32px)',
       position: 'relative', overflow: 'hidden', background: T.bg,
     }}>
       <div style={{ position:'absolute', inset:0, pointerEvents:'none',
@@ -91,7 +91,7 @@ function Hero() {
           color: T.accent, border:`1px solid ${T.accent}38`,
           padding:'5px 14px', borderRadius:20, background:`${T.accent}12`,
           fontFamily: T.fontSans, fontWeight:500,
-        }}>
+        }} className="ab-hero-badge">
           <span style={{ width:6, height:6, borderRadius:'50%', background:T.accent, animation:'ab-dot 2s ease-in-out infinite' }} />
           Student Training &amp; Development Club
         </div>
@@ -101,11 +101,11 @@ function Hero() {
         <p style={{
           fontFamily: T.fontSans, fontSize:'0.95rem', lineHeight:1.9,
           color: T.textMuted, maxWidth:500, margin:'0 auto',
-        }}>
+        }} className="ab-hero-sub">
           A student-led community dedicated to transforming learners into industry-ready professionals through training, mentorship, and real-world experience.
         </p>
 
-        <div style={{ display:'flex', gap:16, flexWrap:'wrap', justifyContent:'center', marginTop:8 }}>
+        <div style={{ display:'flex', gap:16, flexWrap:'wrap', justifyContent:'center', marginTop:8 }} className="ab-hero-btns">
           <a href="#about-s" style={{
             fontFamily: T.fontSans, fontSize:'0.8rem', fontWeight:500,
             letterSpacing:'0.08em', color: T.bg, background: T.accent,
@@ -171,7 +171,7 @@ function Stats() {
 
   return (
     <section ref={ref} style={{
-      padding:'4rem 4rem', background:`rgba(184,204,138,0.02)`,
+      padding:'clamp(2.5rem, 6vw, 4rem) clamp(1rem, 4vw, 4rem)', background:`rgba(184,204,138,0.02)`,
       borderTop:`1px solid ${T.border}`, borderBottom:`1px solid ${T.border}`,
     }}>
       <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'1.5rem' }}
@@ -182,12 +182,12 @@ function Stats() {
               fontFamily: T.fontSerif, fontWeight:300,
               fontSize:'clamp(2.2rem,4vw,3.2rem)', color: T.accent,
               lineHeight:1, marginBottom:'0.5rem', letterSpacing:'-0.02em',
-            }}>{counts[i]}</div>
+            }} className="ab-stat-num">{counts[i]}</div>
             <div style={{
               fontFamily: T.fontSans, fontSize:'0.66rem',
               letterSpacing:'0.2em', textTransform:'uppercase',
               color: T.textDim,
-            }}>{s.label}</div>
+            }} className="ab-stat-label">{s.label}</div>
           </div>
         ))}
       </div>
@@ -201,7 +201,7 @@ function AboutSplit() {
   const ref2 = useReveal();
   return (
     <section id="about-s" style={{
-      padding:'7rem 4rem', borderBottom:`1px solid ${T.borderSub}`,
+      padding:'clamp(3rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)', borderBottom:`1px solid ${T.borderSub}`,
     }}>
       <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'5rem', alignItems:'center' }}
         className="ab-split-grid">
@@ -233,18 +233,18 @@ function AboutSplit() {
 
         {/* Text right */}
         <div ref={ref2} className="ab-reveal ab-rr">
-          <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'1rem' }}>About Abhivriddhi</span>
-          <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(1.9rem,3.8vw,2.8rem)', lineHeight:1.18, color:T.text, marginBottom:'1.5rem' }}>
+          <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'1rem' }} className="ab-split-label">About Abhivriddhi</span>
+          <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(1.9rem,3.8vw,2.8rem)', lineHeight:1.18, color:T.text, marginBottom:'1.5rem' }} className="ab-split-h2">
             Where Potential Meets <em style={{ color:T.accent, fontStyle:'italic' }}>Purpose.</em>
           </h2>
-          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.4rem' }}>
+          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.4rem' }} className="ab-split-p">
             Abhivriddhi — meaning <strong style={{ color:'rgba(232,228,220,0.78)', fontWeight:400 }}>growth and prosperity</strong> in Sanskrit — is a student-run club built on one belief: every student holds extraordinary potential when given the right environment to flourish.
           </p>
-          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.8rem' }}>
+          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.8rem' }} className="ab-split-p">
             We bridge the gap between classroom knowledge and industry readiness through structured training, peer mentorship, and a culture where growth is collective.
           </p>
           <div style={{ borderLeft:`2px solid ${T.accent}`, padding:'1rem 1.3rem', background:`rgba(184,204,138,0.05)`, borderRadius:'0 10px 10px 0' }}>
-            <p style={{ fontFamily:T.fontSerif, fontStyle:'italic', fontWeight:300, fontSize:'1rem', color:'rgba(232,228,220,0.65)', lineHeight:1.6 }}>
+            <p style={{ fontFamily:T.fontSerif, fontStyle:'italic', fontWeight:300, fontSize:'1rem', color:'rgba(232,228,220,0.65)', lineHeight:1.6 }} className="ab-split-quote">
               "Growth is not a destination — it is our default state."
             </p>
           </div>
@@ -263,10 +263,10 @@ function VMO() {
     { num:'03', title:'Objectives', body:'Connecting students with industry professionals, hosting skill-building programs, fostering leadership, and building a community committed to continuous growth.' },
   ];
   return (
-    <section id="vmo" style={{ padding:'7rem 4rem', borderBottom:`1px solid ${T.borderSub}`, background: T.bg2 }}>
+    <section id="vmo" style={{ padding:'clamp(3rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)', borderBottom:`1px solid ${T.borderSub}`, background: T.bg2 }}>
       <div ref={hRef} className="ab-reveal" style={{ textAlign:'center', marginBottom:'4rem' }}>
-        <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'0.8rem' }}>What Drives Us</span>
-        <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(2rem,4vw,3rem)', color:T.text, letterSpacing:'-0.02em' }}>
+        <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'0.8rem' }} className="ab-vmo-label">What Drives Us</span>
+        <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(2rem,4vw,3rem)', color:T.text, letterSpacing:'-0.02em' }} className="ab-vmo-h2">
           Our Vision, Mission &amp; <em style={{ color:T.accent, fontStyle:'italic' }}>Objectives</em>
         </h2>
       </div>
@@ -282,9 +282,9 @@ function VMO() {
                 display:'flex', alignItems:'center', justifyContent:'center',
                 fontFamily:T.fontSerif, fontSize:'0.95rem', color:T.accent,
                 marginBottom:'1.5rem',
-              }}>{c.num}</div>
-              <div style={{ fontFamily:T.fontSerif, fontWeight:400, fontSize:'1.4rem', color:T.text, marginBottom:'0.8rem' }}>{c.title}</div>
-              <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.83rem', lineHeight:1.88, color:T.textMuted }}>{c.body}</p>
+              }} className="ab-vmo-num">{c.num}</div>
+              <div style={{ fontFamily:T.fontSerif, fontWeight:400, fontSize:'1.4rem', color:T.text, marginBottom:'0.8rem' }} className="ab-vmo-title">{c.title}</div>
+              <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.83rem', lineHeight:1.88, color:T.textMuted }} className="ab-vmo-body">{c.body}</p>
             </div>
           );
         })}
@@ -346,9 +346,44 @@ const aboutStyles = `
   .ab-vmo-card:hover { border-color:rgba(184,204,138,0.3); background:rgba(184,204,138,0.07); transform:translateY(-5px); }
 
   @media (max-width:900px) {
-    .ab-split-grid { grid-template-columns:1fr !important; }
+    .ab-split-grid { grid-template-columns:1fr !important; gap:2.5rem !important; }
     .ab-vmo-grid   { grid-template-columns:1fr !important; }
     .ab-stat-grid  { grid-template-columns:1fr 1fr !important; }
+    .ab-rl, .ab-rr { transform: translateY(28px) !important; }
+    .ab-stat-card  { padding: 1.6rem 1.2rem; }
+    .ab-vmo-card   { padding: 2rem 1.5rem; }
+
+    /* Hero title */
+    .ab-char { font-size: clamp(2.6rem, 8vw, 4rem) !important; }
+
+    /* Hero badge & sub text */
+    .ab-hero-badge { font-size: 0.6rem !important; }
+    .ab-hero-sub   { font-size: 0.82rem !important; }
+    .ab-hero-btns a { font-size: 0.78rem !important; padding: 10px 22px !important; }
+
+    /* About split section */
+    .ab-split-label { font-size: 0.6rem !important; }
+    .ab-split-h2    { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .ab-split-p     { font-size: 0.82rem !important; }
+    .ab-split-quote { font-size: 0.88rem !important; }
+
+    /* VMO section */
+    .ab-vmo-label   { font-size: 0.6rem !important; }
+    .ab-vmo-h2      { font-size: clamp(1.5rem, 4vw, 2rem) !important; }
+    .ab-vmo-num     { font-size: 0.82rem !important; }
+    .ab-vmo-title   { font-size: 1.15rem !important; }
+    .ab-vmo-body    { font-size: 0.8rem !important; }
+
+    /* Stat cards */
+    .ab-stat-num   { font-size: clamp(1.8rem, 5vw, 2.4rem) !important; }
+    .ab-stat-label { font-size: 0.6rem !important; }
+  }
+  @media (max-width:480px) {
+    .ab-stat-grid  { grid-template-columns:1fr 1fr !important; }
+    .ab-vmo-card   { padding: 1.8rem 1.4rem !important; }
+    .ab-char       { font-size: clamp(2rem, 10vw, 3rem) !important; }
+    .ab-split-h2   { font-size: clamp(1.3rem, 5vw, 1.7rem) !important; }
+    .ab-vmo-h2     { font-size: clamp(1.3rem, 5vw, 1.7rem) !important; }
   }
 `;
 

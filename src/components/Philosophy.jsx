@@ -1,20 +1,30 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-const pillars = [
+const events = [
   {
     num: '01',
-    title: 'Technical Prowess',
-    desc: 'Bridging the gap between classroom knowledge and real-world application through hands-on exposure.',
+    title: 'Engineering Unplugged',
+    tag: 'Flagship · Freshers',
+    desc: 'An electrifying event that ignites the stage for freshers to confidently step into the spotlight and embrace the limitless possibilities of their 4-year engineering journey.',
+    pills: ['Confidence', 'Opportunity', 'Passion', 'Engineering'],
+    color: '#b8cc8a',
   },
   {
     num: '02',
-    title: 'Professional Presence',
-    desc: "Developing the soft skills, communication, and executive presence that define tomorrow's leaders.",
+    title: 'E.D.G.E',
+    tag: 'Summit · 3 Days',
+    desc: 'A transformative 3-day Student Development Summit empowering students with Resume Building, Personal Branding, Money Management, and career guidance.',
+    pills: ['Resume Building', 'Personal Branding', 'Mock Interviews'],
+    color: '#8ab4cc',
   },
   {
     num: '03',
-    title: 'Global Excellence',
-    desc: 'Setting standards that transcend local benchmarks — preparing members for the global stage.',
+    title: 'EATON Changing Gears',
+    tag: 'Industry Partnership',
+    desc: 'Flagship event in partnership with Eaton — specialized training in LinkedIn optimization, teamwork, and communication skills for professional success.',
+    pills: ['LinkedIn', 'Teamwork', 'Career Boost'],
+    color: '#ccb88a',
   },
 ];
 
@@ -59,7 +69,7 @@ export default function Philosophy() {
       });
 
       if (bar) {
-        const pct = idx < 0 ? 0 : ((idx + 1) / pillars.length) * 100;
+        const pct = idx < 0 ? 0 : ((idx + 1) / events.length) * 100;
         bar.style.height = `${pct}%`;
       }
     };
@@ -67,9 +77,7 @@ export default function Philosophy() {
     const observers = cards.map((card, i) => {
       if (!card) return null;
       const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(i);
-        },
+        ([entry]) => { if (entry.isIntersecting) setActive(i); },
         { threshold: 0.55 }
       );
       obs.observe(card);
@@ -81,7 +89,7 @@ export default function Philosophy() {
       const rect = sectionRef.current.getBoundingClientRect();
       cards.forEach((card, i) => {
         if (!card || i !== activeIndex.current) return;
-        const shift = (-rect.top / (rect.height - window.innerHeight) - (i / pillars.length)) * 18;
+        const shift = (-rect.top / (rect.height - window.innerHeight) - (i / events.length)) * 18;
         card.style.transform = `translateY(${-shift}px) scale(1)`;
       });
     };
@@ -98,43 +106,50 @@ export default function Philosophy() {
       {/* LEFT sticky panel */}
       <div className="phil-left">
         <div className="phil-left-inner">
-          <div className="section-label">Our Ethos</div>
+          <div className="section-label">Featured Events</div>
           <h2 className="phil-heading">
-            Where Discipline<br />Meets <em>Ambition</em>
+            A Journey of <em>Growth</em>
           </h2>
           <p className="phil-sub">
-            We engineer the conditions for genuine, lasting growth — bridging
-            technical mastery with the presence that defines real leaders.
+            Three landmark experiences. One continuous path toward student excellence — from freshers to industry-ready professionals.
           </p>
           <div className="phil-progress-track">
             <div className="phil-progress-bar" ref={progressBarRef} />
             <div className="phil-dots">
-              {pillars.map((p, i) => (
+              {events.map((_, i) => (
                 <div
                   key={i}
                   className="phil-dot"
                   ref={el => dotsRef.current[i] = el}
-                  title={p.title}
+                  title={events[i].title}
                 />
               ))}
             </div>
           </div>
+          <Link to="/events" className="btn-ghost" style={{ marginTop: '2rem', display: 'inline-flex' }}>View All Events →</Link>
         </div>
       </div>
 
       {/* RIGHT scrolling cards */}
       <div className="phil-right">
         <div className="phil-cards-wrap">
-          {pillars.map((p, i) => (
+          {events.map((ev, i) => (
             <div
               className="phil-card"
               key={i}
               ref={el => cardsRef.current[i] = el}
+              style={{ '--ev-color': ev.color, borderColor: `${ev.color}22` }}
             >
-              <div className="phil-card-num">{p.num}</div>
+              <div className="phil-card-num">{ev.num}</div>
               <div className="phil-card-body">
-                <div className="phil-card-title">{p.title}</div>
-                <div className="phil-card-desc">{p.desc}</div>
+                <div className="phil-card-tag" style={{ fontSize: '0.78rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: ev.color, opacity: 0.8, marginBottom: '0.5rem' }}>{ev.tag}</div>
+                <div className="phil-card-title" style={{ color: ev.color === '#b8cc8a' ? undefined : ev.color }}>{ev.title}</div>
+                <div className="phil-card-desc">{ev.desc}</div>
+                <div className="ep-pills" style={{ marginTop: '1.2rem' }}>
+                  {ev.pills.map(p => (
+                    <span key={p} className="ep-pill" style={{ '--ev-color': ev.color, color: ev.color, borderColor: ev.color }}>{ p}</span>
+                  ))}
+                </div>
               </div>
               <div className="phil-card-glow" />
             </div>
