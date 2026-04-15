@@ -13,13 +13,13 @@ const styles = `
     --surface: rgba(255,255,255,0.03);
     --surface-hover: rgba(255,255,255,0.055);
     --border: rgba(255,255,255,0.07);
-    --text: #e8e4dc;
-    --text-sub: #7a8490;
-    --text-dim: #4a5260;
+    --text: #ffffff;
+    --text-sub: rgba(255,255,255,0.75);
+    --text-dim: rgba(255,255,255,0.45);
   }
 
   .c-root * { box-sizing: border-box; margin: 0; padding: 0; }
-  .c-root { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .c-root { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
   /* HERO */
   .c-hero {
@@ -27,7 +27,7 @@ const styles = `
     min-height: 100vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    text-align: center; padding: 120px 24px;
+    text-align: center; padding: clamp(80px,12vw,120px) clamp(16px,4vw,24px);
     background: #0a0d0f;
   }
   .c-hero::before {
@@ -95,16 +95,17 @@ const styles = `
     margin: 40px auto 52px;
   }
 
-  /* GRID */
   .c-grid {
     position: relative; z-index: 1;
     max-width: 1100px; margin: 0 auto;
-    padding: 0 24px 100px;
+    padding: 0 clamp(12px,3vw,24px) 100px;
     display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
   }
   @media (max-width: 700px) {
-    .c-grid { grid-template-columns: 1fr; }
+    .c-grid { grid-template-columns: 1fr; padding: 0 12px 60px; }
     .c-span2 { grid-column: 1; }
+    .c-phone-grid { grid-template-columns: 1fr; }
+    .c-social-grid { grid-template-columns: 1fr; }
   }
   .c-span2 { grid-column: 1 / -1; }
 
@@ -152,7 +153,7 @@ const styles = `
     display: flex; align-items: center; gap: 9px;
     padding: 11px 14px; border-radius: 10px;
     border: 1px solid var(--border); background: transparent;
-    color: var(--text-sub); font-size: 0.83rem; font-family: 'DM Sans', sans-serif;
+    color: var(--text-sub); font-size: 0.83rem; font-family: 'Montserrat', sans-serif;
     text-decoration: none; transition: all 0.22s;
   }
   .c-soc:hover { border-color: var(--accent-border); color: var(--accent); background: var(--accent-glow); }
@@ -181,7 +182,7 @@ const styles = `
   .c-faq-q {
     width: 100%; display: flex; align-items: center; justify-content: space-between;
     background: none; border: none; cursor: pointer;
-    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.87rem;
+    color: var(--text); font-family: 'Montserrat', sans-serif; font-size: 0.87rem;
     padding: 15px 0; text-align: left; gap: 12px; transition: color 0.2s;
   }
   .c-faq-q:hover { color: var(--accent); }
@@ -202,7 +203,7 @@ const styles = `
   .c-fi {
     background: rgba(255,255,255,0.03); border: 1px solid var(--border);
     border-radius: 8px; padding: 11px 13px;
-    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.87rem;
+    color: var(--text); font-family: 'Montserrat', sans-serif; font-size: 0.87rem;
     transition: border-color 0.2s, background 0.2s; outline: none; width: 100%;
   }
   .c-fi::placeholder { color: var(--text-dim); }
@@ -215,7 +216,7 @@ const styles = `
     display: inline-flex; align-items: center; gap: 9px;
     padding: 12px 26px; border-radius: 8px;
     background: var(--accent); color: #0d0d0d;
-    font-family: 'DM Sans', sans-serif; font-size: 0.87rem; font-weight: 500;
+    font-family: 'Montserrat', sans-serif; font-size: 0.87rem; font-weight: 500;
     border: none; cursor: pointer; letter-spacing: 0.03em;
     transition: opacity 0.2s, transform 0.2s;
   }
@@ -239,7 +240,7 @@ const styles = `
     position: fixed; bottom: 28px; right: 28px; z-index: 50;
     background: var(--accent); color: #0d0d0d;
     border: none; border-radius: 50px; padding: 10px 18px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500;
+    font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 500;
     cursor: pointer; display: flex; align-items: center; gap: 7px;
     box-shadow: 0 4px 20px rgba(184,204,138,0.22);
     transition: opacity 0.3s, transform 0.3s;

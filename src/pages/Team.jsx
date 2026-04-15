@@ -16,6 +16,7 @@ export default function Team() {
       color: '#e8e4dc',
       position: 'relative',
       overflow: 'hidden',
+      padding: 'clamp(80px,12vw,120px) clamp(16px,4vw,32px)',
     }}>
       {/* Same hero background as Events page */}
       <div style={{
@@ -33,7 +34,7 @@ export default function Team() {
       <div style={{ position: 'absolute', bottom: '20%', left: 0, right: 0, height: 1, background: 'linear-gradient(to right, transparent, rgba(184,204,138,0.12), transparent)' }} />
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 32px' }}>
+      <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 clamp(12px,4vw,32px)', maxWidth: 520, width: '100%' }}>
 
         {/* Badge */}
         <div style={{

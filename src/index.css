@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 @font-face {
   font-family: 'Saman';
@@ -14,9 +14,9 @@
   --surface2: #1a2030;
   --accent: #b8cc8a;
   --accent-dim: #8fa660;
-  --text: #e8e4dc;
-  --text-muted: #7a8490;
-  --text-dim: #4a5260;
+  --text: #ffffff;
+  --text-muted: #cccccc;
+  --text-dim: #999999;
   --border: rgba(184,204,138,0.12);
   --border-subtle: rgba(255,255,255,0.06);
 }
@@ -26,8 +26,9 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
   overflow-x: hidden;
 }
 
@@ -108,8 +109,8 @@ nav.scrolled {
   list-style: none;
 }
 .nav-links a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.125rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--text-muted);
@@ -195,8 +196,8 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
   font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -294,7 +295,7 @@ nav.scrolled {
   transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
 }
 .hero-desc {
-  font-size: 0.92rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   color: var(--text-muted);
   max-width: 420px;
@@ -322,8 +323,8 @@ body.loaded .hero-cta-row { opacity: 1; transform: translateY(0); }
   gap: 0.75rem;
   background: var(--accent);
   color: #0a0d0f;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   padding: 0.9rem 2rem;
@@ -352,8 +353,8 @@ body.loaded .hero-cta-row { opacity: 1; transform: translateY(0); }
   gap: 0.5rem;
   background: transparent;
   color: var(--text-muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   padding: 0.9rem 1.6rem;
@@ -390,7 +391,7 @@ body.loaded .hero-marquee-wrap { opacity: 1; transform: translateY(0); }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.68rem;
+  font-size: 0.9rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-dim);
@@ -446,10 +447,32 @@ body.loaded .hero-desc { opacity: 1; transform: translateY(0); }
   background: radial-gradient(ellipse at 50% 100%, rgba(184,204,138,0.08) 0%, transparent 70%);
 }
 
-/* ─── SECTION SHARED ─── */
+/* ─── MONTSERRAT GLOBAL OVERRIDE ─── */
+[style*="Montserrat"],
+[style*="montserrat"] {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  color: var(--text-muted) !important;
+}
+
+/* Keep accent color for label/badge elements */
+[style*="Montserrat"][style*="uppercase"],
+[style*="Montserrat"][style*="letterSpacing"] {
+  color: var(--accent) !important;
+  font-size: 0.92rem !important;
+}
+
+/* Keep button/CTA colors intact */
+button[style*="Montserrat"],
+a[style*="Montserrat"] {
+  font-size: 1.05rem !important;
+  color: inherit !important;
+}
+
+
 section { position: relative; }
 .section-label {
-  font-size: 0.68rem;
+  font-size: 0.9rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--accent);
@@ -497,7 +520,7 @@ section { position: relative; }
 }
 .phil-heading em { font-style: italic; color: var(--accent); }
 .phil-sub {
-  font-size: 0.88rem;
+  font-size: 1.15rem;
   line-height: 1.85;
   color: var(--text-muted);
   margin-bottom: 2.8rem;
@@ -621,7 +644,7 @@ section { position: relative; }
 }
 .phil-card--active .phil-card-title { color: #fff; }
 .phil-card-desc {
-  font-size: 0.88rem;
+  font-size: 1.15rem;
   line-height: 1.8;
   color: var(--text-muted);
 }
@@ -642,7 +665,7 @@ section { position: relative; }
 
 /* keep old .philosophy-body for About page */
 .philosophy-body {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   line-height: 1.9;
   color: var(--text-muted);
   margin-top: 1.8rem;
@@ -694,7 +717,7 @@ section { position: relative; }
   flex: 1;
 }
 .pillar-card-tag {
-  font-size: 0.6rem;
+  font-size: 0.88rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--card-accent);
@@ -708,13 +731,13 @@ section { position: relative; }
   line-height: 1.1;
 }
 .pillar-card-sub {
-  font-size: 0.7rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   letter-spacing: 0.08em;
   margin-bottom: 0.5rem;
 }
 .pillar-card-desc {
-  font-size: 0.88rem;
+  font-size: 1.15rem;
   line-height: 1.75;
   color: var(--text-muted);
 }
@@ -799,7 +822,7 @@ section { position: relative; }
   background-clip: text;
 }
 .stat-label {
-  font-size: 0.78rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.5;
   max-width: 160px;
@@ -813,7 +836,7 @@ section { position: relative; }
   position: relative;
 }
 .ep-header { max-width: 560px; margin-bottom: 4rem; }
-.ep-sub { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; margin-top: 0.8rem; }
+.ep-sub { font-size: 1.15rem; color: var(--text-muted); line-height: 1.75; margin-top: 0.8rem; }
 
 /* Journey row */
 .ep-journey {
@@ -954,7 +977,7 @@ section { position: relative; }
 }
 .ep-step--active .ep-card-glow { opacity: 0.06; }
 .ep-card-tag {
-  font-size: 0.6rem;
+  font-size: 0.85rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ev-color);
@@ -972,7 +995,7 @@ section { position: relative; }
 }
 .ep-step--active .ep-card-name { color: #fff; }
 .ep-card-desc {
-  font-size: 0.84rem;
+  font-size: 1.1rem;
   line-height: 1.78;
   color: var(--text-muted);
   flex: 1;
@@ -981,7 +1004,7 @@ section { position: relative; }
 .ep-step--active .ep-card-desc { color: var(--text); }
 .ep-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
 .ep-pill {
-  font-size: 0.58rem;
+  font-size: 0.82rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ev-color);
@@ -1010,7 +1033,7 @@ section { position: relative; }
   align-items: center;
 }
 .aftermovie-body {
-  font-size: 0.92rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   color: var(--text-muted);
   margin-top: 1.5rem;
@@ -1018,7 +1041,7 @@ section { position: relative; }
 }
 .edition-tag {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-dim);
@@ -1079,7 +1102,7 @@ section { position: relative; }
   border-top: none;
 }
 .video-caption-left {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   letter-spacing: 0.12em;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -1087,7 +1110,7 @@ section { position: relative; }
 .video-caption-right {
   font-size: 0.72rem;
   color: var(--text-dim);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: italic;
 }
 
@@ -1111,21 +1134,21 @@ footer {
   margin-bottom: 0.7rem;
 }
 .footer-brand-desc {
-  font-size: 0.8rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-dim);
   max-width: 240px;
 }
 .footer-col-title {
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.2rem;
 }
 .footer-organizer { display: flex; flex-direction: column; gap: 0.6rem; }
-.organizer-item { font-size: 0.82rem; color: var(--text-muted); }
-.organizer-item span { color: var(--text-dim); margin-left: 0.5rem; font-size: 0.78rem; }
+.organizer-item { font-size: 1.05rem; color: var(--text-muted); }
+.organizer-item span { color: var(--text-dim); margin-left: 0.5rem; font-size: 0.95rem; }
 .footer-social { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
 .social-btn {
   width: 36px; height: 36px;
@@ -1144,10 +1167,10 @@ footer {
   padding-top: 2rem;
   border-top: 1px solid var(--border-subtle);
 }
-.footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+.footer-copy { font-size: 0.95rem; color: var(--text-dim); }
 .footer-links { display: flex; gap: 1.8rem; }
 .footer-links a {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -1239,7 +1262,7 @@ footer {
   gap: 0.4rem;
 }
 .domain-card-tag {
-  font-size: 0.62rem;
+  font-size: 0.88rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--card-accent);
@@ -1253,13 +1276,13 @@ footer {
   line-height: 1;
 }
 .domain-card-team {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: var(--text-dim);
   letter-spacing: 0.08em;
   margin-bottom: 0.8rem;
 }
 .domain-card-desc {
-  font-size: 0.84rem;
+  font-size: 1.1rem;
   line-height: 1.75;
   color: var(--text-muted);
   max-width: 340px;
@@ -1305,11 +1328,15 @@ footer {
 
 @media (max-width: 900px) {
   nav { padding: 1.2rem 2rem; }
-  #hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; }
-  .hero-right { margin-top: 2rem; }
+  #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2rem; }
+  .hero-left { text-align: center; align-items: center; display: flex; flex-direction: column; }
+  .hero-eyebrow { align-self: center; }
+  .hero-cta-row { justify-content: center; }
+  .hero-right { margin-top: 0; }
   .hero-video-wrap { border-radius: 8px; }
   .hero-cta-row { flex-wrap: wrap; }
   .hero-marquee-wrap { display: none; }
+  .hero-desc { max-width: 100%; font-size: 1rem; }
   .committee-word {
     animation: none;
     -webkit-text-fill-color: rgba(184,204,138,0.75);
@@ -1317,18 +1344,49 @@ footer {
     filter: none;
   }
   #philosophy.phil-section { grid-template-columns: 1fr; min-height: unset; }
-  .phil-left { position: relative; height: auto; padding: 4rem 2rem 2rem; border-right: none; border-bottom: 1px solid var(--border-subtle); }
-  .phil-right { padding: 4rem 2rem 6rem; }
-  .phil-cards-wrap { gap: 16vh; }
+  .phil-left { position: relative; height: auto; padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  .phil-right { padding: 3rem 1.5rem 5rem; }
+  .phil-cards-wrap { gap: 10vh; padding-bottom: 10vh; }
   .phil-card-num { font-size: 5rem; }
-  #numbers { padding: 5rem 2rem; }
+  .phil-card { padding: 2rem 1.5rem; }
+  #numbers { padding: 4rem 1.5rem; }
+  .numbers-header { margin-bottom: 2.5rem; }
   .numbers-grid { grid-template-columns: repeat(3, 1fr); }
-  #events-preview { padding: 5rem 2rem; }
+  .stat-card { padding: 2rem 1.2rem; }
+  #events-preview { padding: 5rem 1.5rem; }
   .ep-grid { grid-template-columns: 1fr; }
-  #aftermovie { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
-  footer { padding: 3rem 2rem 2rem; }
+  .ep-card { padding: 1.5rem 1.2rem; }
+  #aftermovie { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+  footer { padding: 3rem 1.5rem 2rem; }
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .page-hero { padding: 5rem 1.5rem 4rem; }
+  .about-story { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+  .mission-section { padding: 5rem 1.5rem; }
+  .mission-grid { grid-template-columns: 1fr; }
+  .team-section { padding: 5rem 1.5rem; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .events-section { padding: 5rem 1.5rem; }
+  .event-card { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.5rem; }
+  .sponsors-section { padding: 5rem 1.5rem; }
+  .contact-section { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  #hero { padding: 5.5rem 1rem 2.5rem; }
+  .hero-h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+  .hero-cta-row { gap: 0.8rem; }
+  .btn-primary, .btn-ghost { font-size: 0.95rem; padding: 0.8rem 1.4rem; }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-card { padding: 1.6rem 1rem; }
+  .phil-left { padding: 2.5rem 1rem 1.5rem; }
+  .phil-right { padding: 2rem 1rem 4rem; }
+  .phil-cards-wrap { gap: 6vh; }
+  #aftermovie { padding: 4rem 1rem; }
+  footer { padding: 2.5rem 1rem 1.5rem; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .domains-sticky { padding: 0 1rem !important; }
 }
 
 /* ─── HAMBURGER ─── */
@@ -1389,9 +1447,9 @@ footer {
 }
 .page-hero-title em { font-style: italic; color: var(--accent); }
 .page-hero-sub {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--text-muted);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: italic;
   position: relative;
 }
@@ -1428,7 +1486,7 @@ footer {
   color: var(--accent);
   margin-bottom: 0.8rem;
 }
-.mission-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; }
+.mission-card p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.75; }
 
 /* ─── TEAM ─── */
 .team-section { padding: 7rem 4rem; }
@@ -1468,7 +1526,7 @@ footer {
   display: flex; align-items: center; justify-content: center;
 }
 .team-role {
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1480,7 +1538,7 @@ footer {
   color: var(--text);
   margin-bottom: 0.3rem;
 }
-.team-dept { font-size: 0.78rem; color: var(--text-dim); }
+.team-dept { font-size: 1rem; color: var(--text-dim); }
 
 /* ─── EVENTS ─── */
 .events-section { padding: 7rem 4rem; }
@@ -1496,7 +1554,7 @@ footer {
 }
 .event-card:hover { background: var(--surface); }
 .event-tag {
-  font-size: 0.62rem;
+  font-size: 0.88rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1509,10 +1567,10 @@ footer {
   color: var(--text);
   margin-bottom: 0.2rem;
 }
-.event-edition { font-size: 0.75rem; color: var(--text-dim); }
-.event-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.event-edition { font-size: 1rem; color: var(--text-dim); }
+.event-desc { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; }
 .event-status {
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 0.35rem 0.9rem;
@@ -1526,7 +1584,7 @@ footer {
 .sponsors-section { padding: 7rem 4rem; }
 .sponsor-tier { margin-bottom: 5rem; }
 .sponsor-tier-label {
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1563,20 +1621,20 @@ footer {
 }
 .contact-details { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2.5rem; }
 .contact-item-label {
-  font-size: 0.62rem;
+  font-size: 0.9rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
-.contact-item-value { font-size: 0.9rem; color: var(--text-muted); }
+.contact-item-value { font-size: 1.15rem; color: var(--text-muted); }
 .contact-socials { display: flex; gap: 0.8rem; margin-top: 0.4rem; }
 
 .contact-form { display: flex; flex-direction: column; gap: 1.4rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
 .form-label {
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1585,8 +1643,8 @@ footer {
   background: var(--surface);
   border: 1px solid var(--border-subtle);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
   padding: 0.85rem 1rem;
   outline: none;
   transition: border-color 0.3s ease;
@@ -1636,4 +1694,145 @@ footer {
 
 @media (max-width: 600px) {
   .team-grid { grid-template-columns: 1fr 1fr; }
+  .ep-journey { flex-direction: column; gap: 1.5rem; }
+  .ep-connector { display: none; }
+  .ep-step { align-items: flex-start; }
 }
+
+/* ─── MOBILE FONT SCALING ─── */
+@media (max-width: 900px) {
+  /* Base body */
+  body { font-size: 0.95rem; }
+
+  /* Force all page roots to inherit body font size */
+  .c-root, .s-root, .t-root { font-size: inherit; }
+
+  /* Navbar */
+  .nav-logo { font-size: 1.8rem; }
+  .nav-links a { font-size: 1rem; }
+
+  /* Hero */
+  .hero-eyebrow { font-size: 0.72rem; }
+  .hero-h1 { font-size: clamp(2.6rem, 8vw, 4rem); }
+  .hero-h1 .accent-word { font-size: clamp(1.1rem, 3.5vw, 1.8rem); }
+  .hero-tagline { font-size: 1.05rem; }
+  .hero-desc { font-size: 0.92rem; }
+  .btn-primary, .btn-ghost { font-size: 0.88rem; }
+
+  /* Section labels & headings */
+  .section-label { font-size: 0.72rem; }
+  .section-heading { font-size: clamp(1.7rem, 5vw, 2.4rem); }
+
+  /* Philosophy */
+  .phil-heading { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+  .phil-sub { font-size: 0.92rem; }
+  .phil-card-title { font-size: 1.35rem; }
+  .phil-card-desc { font-size: 0.92rem; }
+
+  /* Numbers */
+  .stat-number { font-size: clamp(2rem, 6vw, 2.8rem); }
+  .stat-label { font-size: 0.82rem; }
+
+  /* Events preview */
+  .ep-sub { font-size: 0.92rem; }
+  .ep-card-name { font-size: 1.3rem; }
+  .ep-card-desc { font-size: 0.88rem; }
+  .ep-card-tag { font-size: 0.7rem; }
+  .ep-pill { font-size: 0.55rem !important; padding: 0.12rem 0.4rem !important; letter-spacing: 0.06em !important; }
+
+  /* Aftermovie */
+  .aftermovie-body { font-size: 0.92rem; }
+  .edition-tag { font-size: 0.72rem; }
+  .video-caption-left { font-size: 0.78rem; }
+
+  /* Footer */
+  .footer-brand-name { font-size: 1rem; }
+  .footer-brand-desc { font-size: 0.85rem; }
+  .footer-col-title { font-size: 0.72rem; }
+  .organizer-item { font-size: 0.88rem; }
+  .footer-copy { font-size: 0.78rem; }
+  .footer-links a { font-size: 0.78rem; }
+
+  /* Page hero (About, Events, etc.) */
+  .page-hero-title { font-size: clamp(2.2rem, 7vw, 3.5rem); }
+  .page-hero-sub { font-size: 0.95rem; }
+
+  /* About page */
+  .philosophy-body { font-size: 0.92rem; }
+  .mission-card-label { font-size: 0.95rem; }
+  .mission-card p { font-size: 0.92rem; }
+
+  /* Team page */
+  .team-role { font-size: 0.72rem; }
+  .team-name { font-size: 1rem; }
+  .team-dept { font-size: 0.82rem; }
+
+  /* Events list page */
+  .event-tag { font-size: 0.72rem; }
+  .event-title { font-size: 1.2rem; }
+  .event-edition { font-size: 0.82rem; }
+  .event-desc { font-size: 0.92rem; }
+  .event-status { font-size: 0.72rem; }
+
+  /* Contact page */
+  .contact-item-label { font-size: 0.72rem; }
+  .contact-item-value { font-size: 0.92rem; }
+  .form-label { font-size: 0.72rem; }
+  .form-input { font-size: 0.88rem; }
+
+  /* Inline-styled page elements — About, Events, Contact, Sponsors */
+  /* Hero animated titles */
+  .ab-char, .ev-char, .c-char, .s-char { font-size: clamp(2.6rem, 8vw, 4.5rem) !important; }
+
+  /* Badges / labels */
+  .ev-badge, .c-badge, .s-badge { font-size: 0.6rem !important; }
+  .ev-hero-sub, .c-hero-sub, .s-hero-sub { font-size: 0.78rem !important; }
+  .s-hero-meta, .c-response { font-size: 0.66rem !important; }
+
+  /* About page inline text */
+  .ab-vmo-card div:nth-child(2) { font-size: 1.2rem !important; }
+  .ab-vmo-card p { font-size: 0.83rem !important; }
+
+  /* Contact cards */
+  .c-card-title { font-size: 1.05rem !important; }
+  .c-pname { font-size: 0.72rem !important; }
+  .c-pphone { font-size: 0.82rem !important; }
+  .c-loc { font-size: 0.78rem !important; }
+  .c-elink { font-size: 0.82rem !important; }
+  .c-faq-q { font-size: 0.78rem !important; }
+  .c-faq-a { font-size: 0.74rem !important; }
+  .c-fi { font-size: 0.8rem !important; }
+  .c-fl { font-size: 0.6rem !important; }
+  .c-btn { font-size: 0.8rem !important; }
+  .c-soc { font-size: 0.78rem !important; }
+
+  /* Sponsors */
+  .s-section-label { font-size: 0.6rem !important; }
+  .s-logo-name { font-size: 0.85rem !important; }
+  .s-cta-label { font-size: 0.6rem !important; }
+  .s-cta-heading { font-size: clamp(1.4rem, 4vw, 2rem) !important; }
+  .s-cta-body { font-size: 0.8rem !important; }
+  .s-btn { font-size: 0.8rem !important; }
+  .s-btn-ghost { font-size: 0.78rem !important; }
+
+  /* Events page featured cards */
+  .event-text h2 { font-size: clamp(1.4rem, 4vw, 2rem) !important; }
+  .event-text p { font-size: 0.82rem !important; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 0.88rem; }
+  .nav-logo { font-size: 1.5rem; }
+  .hero-h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+  .hero-h1 .accent-word { font-size: clamp(0.95rem, 4vw, 1.4rem); }
+  .section-heading { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .phil-heading { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .stat-number { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .stat-label { font-size: 0.75rem; }
+  .ep-card-name { font-size: 1.15rem; }
+  .page-hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+  .ab-char, .ev-char, .c-char, .s-char { font-size: clamp(2rem, 10vw, 3rem) !important; }
+  .s-cta-heading { font-size: clamp(1.2rem, 5vw, 1.6rem) !important; }
+  .event-text h2 { font-size: clamp(1.2rem, 5vw, 1.6rem) !important; }
+}
+

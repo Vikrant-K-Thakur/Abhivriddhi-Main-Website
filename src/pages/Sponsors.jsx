@@ -26,7 +26,7 @@ const styles = `
     min-height: 100vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    text-align: center; padding: 120px 24px;
+    text-align: center; padding: clamp(80px,12vw,120px) clamp(16px,4vw,24px);
     background: #0a0d0f;
   }
   .s-hero::before {
@@ -94,7 +94,7 @@ const styles = `
   .s-section {
     position: relative; z-index: 1;
     max-width: 1100px; margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 clamp(12px,3vw,24px);
   }
 
   .s-section-label {
@@ -111,7 +111,8 @@ const styles = `
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
     margin-bottom: 80px;
   }
-  @media (max-width: 600px) { .s-logo-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .s-logo-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 400px) { .s-logo-grid { grid-template-columns: 1fr; } }
 
   .s-logo-cell {
     height: 100px; border-radius: 12px;
@@ -147,7 +148,7 @@ const styles = `
   .s-cta {
     position: relative; z-index: 1;
     max-width: 1100px; margin: 0 auto;
-    padding: 0 24px 100px;
+    padding: 0 clamp(12px,3vw,24px) clamp(60px,10vw,100px);
   }
   .s-cta-inner {
     border: 1px solid var(--border);
@@ -167,7 +168,10 @@ const styles = `
     background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(184,204,138,0.04) 0%, transparent 70%);
   }
   @media (max-width: 700px) {
-    .s-cta-inner { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
+    .s-cta-inner { grid-template-columns: 1fr; padding: 28px 20px; gap: 24px; }
+  }
+  @media (max-width: 480px) {
+    .s-cta-inner { padding: 24px 16px; }
   }
 
   .s-cta-label {

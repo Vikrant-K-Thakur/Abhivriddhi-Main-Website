@@ -12,9 +12,9 @@ const T = {
   accent:     "#b8cc8a",
   accentDim:  "#8fa660",
   accentHov:  "#cde09e",
-  text:       "#e8e4dc",
-  textMuted:  "#7a8490",
-  textDim:    "#4a5260",
+  text:       "#ffffff",
+  textMuted:  "rgba(255,255,255,0.75)",
+  textDim:    "rgba(255,255,255,0.45)",
   border:     "rgba(184,204,138,0.12)",
   borderSub:  "rgba(255,255,255,0.06)",
   d1: "#b8cc8a",
@@ -69,7 +69,7 @@ function SectionLabel({ children }) {
     <div className="inline-flex items-center gap-2 mb-5">
       <div style={{ width: 20, height: 1, background: T.accent }} />
       <span style={{
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         fontSize: 11,
         letterSpacing: "0.22em",
         textTransform: "uppercase",
@@ -96,7 +96,7 @@ function Tag({ label, color }) {
       background: `${c}0d`,
       color: c,
       fontSize: 11,
-      fontFamily: "'DM Sans', sans-serif",
+      fontFamily: "'Montserrat', sans-serif",
       fontWeight: 500,
       letterSpacing: "0.06em",
     }}>
@@ -178,7 +178,7 @@ const eventVisuals = [
         borderRadius: 11,
         padding: '4px 14px',
         fontSize: 9.5,
-        fontFamily: 'DM Sans,sans-serif',
+        fontFamily: 'Montserrat,sans-serif',
         letterSpacing: '0.12em',
         color: T.accent,
       }}>LIVE EVENT</div>
@@ -189,7 +189,7 @@ const eventVisuals = [
         borderRadius: 11,
         padding: '4px 14px',
         fontSize: 9.5,
-        fontFamily: 'DM Sans,sans-serif',
+        fontFamily: 'Montserrat,sans-serif',
         letterSpacing: '0.12em',
         color: T.textMuted,
       }}>FRESHERS 2024</div>
@@ -221,7 +221,7 @@ const eventVisuals = [
         borderRadius: 11,
         padding: '4px 14px',
         fontSize: 9.5,
-        fontFamily: 'DM Sans,sans-serif',
+        fontFamily: 'Montserrat,sans-serif',
         letterSpacing: '0.12em',
         color: T.d2,
       }}>3-DAY SUMMIT</div>
@@ -243,7 +243,7 @@ const eventVisuals = [
         borderRadius: 11,
         padding: '4px 14px',
         fontSize: 9.5,
-        fontFamily: 'DM Sans,sans-serif',
+        fontFamily: 'Montserrat,sans-serif',
         letterSpacing: '0.12em',
         color: T.d3,
       }}>WORKSHOP</div>
@@ -262,7 +262,7 @@ const eventVisuals = [
         borderRadius: 11,
         padding: '4px 14px',
         fontSize: 9.5,
-        fontFamily: 'DM Sans,sans-serif',
+        fontFamily: 'Montserrat,sans-serif',
         letterSpacing: '0.12em',
         color: T.d5,
       }}>FLAGSHIP EVENT</div>
@@ -298,7 +298,7 @@ function FeaturedEventCard({ event, index, reverse }) {
         minHeight: 340,
       }} className="event-grid">
         <div style={{
-          padding: "52px 48px",
+          padding: "clamp(28px,5vw,52px) clamp(20px,4vw,48px)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -359,7 +359,7 @@ function FeaturedEventCard({ event, index, reverse }) {
           </p>
 
           <p style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 14,
             color: T.textMuted,
             lineHeight: 1.75,
@@ -376,7 +376,7 @@ function FeaturedEventCard({ event, index, reverse }) {
           <div>
             <button
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontSize: 13,
                 fontWeight: 500,
                 letterSpacing: "0.06em",
@@ -493,7 +493,7 @@ export default function Events() {
         .ev-char-space { display: inline-block; width: 0.28em; }
         .ev-badge {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
           color: ${T.accent}; border: 1px solid ${T.accent}38;
           padding: 5px 14px; border-radius: 20px; margin-bottom: 24px;
@@ -505,7 +505,7 @@ export default function Events() {
           animation: ev-pdot 2s ease-in-out infinite;
         }
         .ev-hero-sub {
-          margin-top: 16px; font-family: 'DM Sans', sans-serif;
+          margin-top: 16px; font-family: 'Montserrat', sans-serif;
           font-size: 0.9rem; color: ${T.textDim}; letter-spacing: 0.05em;
           opacity: 0; animation: ev-fup 0.6s ease 1.1s forwards;
         }
@@ -525,8 +525,12 @@ export default function Events() {
 
         @media (max-width: 900px) {
           .event-grid { grid-template-columns: 1fr !important; }
-          .event-visual { order: 1 !important; min-height: 260px !important; border-left: none !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
-          .event-text { order: 2 !important; padding: 36px 28px !important; }
+          .event-visual { order: 1 !important; min-height: 220px !important; border-left: none !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+          .event-text { order: 2 !important; padding: 28px 20px !important; }
+        }
+        @media (max-width: 480px) {
+          .event-text { padding: 20px 16px !important; }
+          .event-visual { min-height: 180px !important; }
         }
 
         ::-webkit-scrollbar { width: 5px; }
@@ -544,6 +548,7 @@ export default function Events() {
         justifyContent: "center",
         overflow: "hidden",
         background: T.bg,
+        padding: 'clamp(80px,12vw,120px) clamp(16px,4vw,32px)',
       }}>
         <div style={{
           position:"absolute",inset:0,pointerEvents:"none",zIndex:0,
@@ -578,7 +583,7 @@ export default function Events() {
             <button
               onClick={() => document.getElementById("events")?.scrollIntoView({ behavior:"smooth" })}
               style={{
-                fontFamily:"'DM Sans',sans-serif",
+                fontFamily:"'Montserrat',sans-serif",
                 fontSize:13, fontWeight:500, letterSpacing:"0.08em",
                 color:T.bg, background:T.accent,
                 border:"none", borderRadius:8,
@@ -591,7 +596,7 @@ export default function Events() {
               Explore Events
             </button>
             <button style={{
-              fontFamily:"'DM Sans',sans-serif",
+              fontFamily:"'Montserrat',sans-serif",
               fontSize:13, fontWeight:400,
               color:T.textMuted, background:"transparent",
               border:`1px solid ${T.borderSub}`,
@@ -612,13 +617,13 @@ export default function Events() {
           display:"flex", flexDirection:"column", alignItems:"center", gap:6,
           opacity:0.35,
         }}>
-          <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:10, color:T.textDim, letterSpacing:"0.2em", textTransform:"uppercase", writingMode:"vertical-rl" }}>Scroll</span>
+          <span style={{ fontFamily:"'Montserrat',sans-serif", fontSize:10, color:T.textDim, letterSpacing:"0.2em", textTransform:"uppercase", writingMode:"vertical-rl" }}>Scroll</span>
           <div style={{ width:1, height:40, background:`linear-gradient(to bottom, ${T.accent}, transparent)` }} />
         </div>
       </section>
 
       {/* FEATURED EVENTS */}
-      <section id="events" style={{ padding:"120px 32px", maxWidth:1200, margin:"0 auto" }}>
+      <section id="events" style={{ padding:'clamp(3rem,8vw,7.5rem) clamp(1rem,3vw,2rem)', maxWidth:1200, margin:'0 auto' }}>
         <Reveal>
           <SectionLabel>Featured Events</SectionLabel>
           <div style={{ display:"flex", flexDirection:"column", gap:4, marginBottom:64 }}>
@@ -646,3 +651,4 @@ export default function Events() {
     </div>
   );
 }
+
