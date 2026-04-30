@@ -14,24 +14,7 @@ export default function Hero() {
   const canvasRef = useRef(null);
   const committeeRef = useRef(null);
 
-  const handleCommitteeMove = (e) => {
-    const el = committeeRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    el.style.setProperty('--cx', `${x}%`);
-    el.style.setProperty('--cy', `${y}%`);
-    el.style.setProperty('--glow', '1');
-  };
-
-  const handleCommitteeLeave = () => {
-    const el = committeeRef.current;
-    if (!el) return;
-    el.style.setProperty('--glow', '0');
-  };
-
-  // Subtle mouse parallax on orbs
+// Subtle mouse parallax on orbs
   useEffect(() => {
     const handler = (e) => {
       if (!orbRef.current) return;
@@ -124,8 +107,6 @@ export default function Hero() {
           <span
             className="accent-word committee-word"
             ref={committeeRef}
-            onMouseMove={handleCommitteeMove}
-            onMouseLeave={handleCommitteeLeave}
           >
             Student Training and Development Committee
           </span>

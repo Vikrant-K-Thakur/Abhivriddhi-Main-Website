@@ -248,39 +248,26 @@ nav.scrolled {
   display: block;
   position: relative;
   cursor: default;
+  background: linear-gradient(90deg,
+    #b8cc8a 0%,
+    #b8cc8a 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: radial-gradient(
-    circle 120px at var(--cx, 50%) var(--cy, 50%),
-    #d4e8a0 0%,
-    #b8cc8a 35%,
-    rgba(184,204,138,0.4) 65%,
-    rgba(184,204,138,0.15) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  --cx: 50%;
-  --cy: 50%;
-  --glow: 0;
-  filter: drop-shadow(0 0 calc(var(--glow) * 18px) rgba(184,204,138,0.7));
-  animation: committeeShimmer 3s linear infinite;
+  animation: committeeGlow 7s ease-in-out infinite;
 }
-.committee-word:hover {
-  animation: none;
-  background-image: radial-gradient(
-    circle 150px at var(--cx, 50%) var(--cy, 50%),
-    #ffffff 0%,
-    #d4e8a0 25%,
-    #b8cc8a 55%,
-    rgba(184,204,138,0.2) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
+@keyframes committeeGlow {
+  0%   { background-image: linear-gradient(90deg, #b8cc8a 0%, #b8cc8a 100%); }
+  10%  { background-image: linear-gradient(90deg, #ffffff 0%, #e8f5c8 15%, #b8cc8a 40%, #b8cc8a 100%); }
+  25%  { background-image: linear-gradient(90deg, #b8cc8a 0%, #ffffff 30%, #e8f5c8 50%, #b8cc8a 80%, #b8cc8a 100%); }
+  45%  { background-image: linear-gradient(90deg, #b8cc8a 0%, #b8cc8a 40%, #ffffff 60%, #e8f5c8 75%, #b8cc8a 100%); }
+  60%  { background-image: linear-gradient(90deg, #b8cc8a 0%, #b8cc8a 70%, #ffffff 85%, #e8f5c8 100%); }
+  75%  { background-image: linear-gradient(90deg, #b8cc8a 0%, #b8cc8a 100%); }
+  100% { background-image: linear-gradient(90deg, #b8cc8a 0%, #b8cc8a 100%); }
 }
-@keyframes committeeShimmer {
-  0%   { --cx: -10%; --cy: 50%; filter: drop-shadow(0 0 8px rgba(184,204,138,0.3)); }
-  50%  { --cx: 110%; --cy: 50%; filter: drop-shadow(0 0 16px rgba(184,204,138,0.6)); }
-  100% { --cx: -10%; --cy: 50%; filter: drop-shadow(0 0 8px rgba(184,204,138,0.3)); }
-}
+.committee-word:hover { -webkit-text-fill-color: transparent; }
 
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif;
@@ -1338,9 +1325,10 @@ footer {
   .hero-marquee-wrap { display: none; }
   .hero-desc { max-width: 100%; font-size: 1rem; }
   .committee-word {
-    animation: none;
-    -webkit-text-fill-color: rgba(184,204,138,0.75);
+    color: #b8cc8a;
+    -webkit-text-fill-color: #b8cc8a;
     background: none;
+    animation: none;
     filter: none;
   }
   #philosophy.phil-section { grid-template-columns: 1fr; min-height: unset; }
