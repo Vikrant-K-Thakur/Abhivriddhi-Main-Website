@@ -95,10 +95,7 @@ function Tag({ label, color }) {
       border: `1px solid ${c}28`,
       background: `${c}0d`,
       color: c,
-      fontSize: 11,
-      fontFamily: "'Montserrat', sans-serif",
-      fontWeight: 500,
-      letterSpacing: "0.06em",
+      fontSize: 14,
     }}>
       {label}
     </span>
@@ -377,23 +374,31 @@ function FeaturedEventCard({ event, index, reverse }) {
             <button
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: 13,
-                fontWeight: 500,
+                fontSize: 12,
+                fontWeight: 600,
                 letterSpacing: "0.06em",
-                color: T.bg,
-                background: hovered ? T.accentHov : T.accent,
-                border: "none",
+                color: '#0a0d0f',
+                background: T.accent,
+                border: `1px solid ${T.accent}`,
                 borderRadius: 8,
                 padding: "11px 24px",
                 cursor: "pointer",
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                transition: "background 0.3s ease",
+                transition: "background 0.3s ease, color 0.3s ease, border-color 0.3s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = T.accent;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = T.accent;
+                e.currentTarget.style.color = '#0a0d0f';
               }}
             >
               {event.ctaText}
-              <span style={{ transition: "transform 0.3s", transform: hovered ? "translateX(4px)" : "none" }}>→</span>
+              <span>→</span>
             </button>
           </div>
         </div>
