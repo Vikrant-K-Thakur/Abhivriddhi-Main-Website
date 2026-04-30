@@ -108,18 +108,19 @@ const styles = `
   }
 
   .s-logo-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     margin-bottom: 80px;
   }
-  @media (max-width: 700px) { .s-logo-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 400px) { .s-logo-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .s-logo-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .s-logo-grid { grid-template-columns: repeat(2, 1fr); } }
 
   .s-logo-cell {
-    height: 100px; border-radius: 12px;
+    height: 120px; border-radius: 12px;
     border: 1px solid var(--border);
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden; cursor: default;
+    padding: 16px;
     transition: border-color 0.3s, background 0.3s, transform 0.25s, box-shadow 0.25s;
   }
   .s-logo-cell::before {
@@ -129,19 +130,21 @@ const styles = `
   }
   .s-logo-cell:hover {
     border-color: var(--accent-border);
-    background: var(--accent-glow);
+    background: rgba(255,255,255,0.06);
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   }
   .s-logo-cell:hover::before { opacity: 1; }
-  .s-logo-cell:hover .s-logo-name { color: var(--accent); }
 
-  .s-logo-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-weight: 400;
-    color: var(--text-dim); letter-spacing: 0.06em;
-    transition: color 0.3s; text-align: center; padding: 0 16px;
+  .s-logo-img {
+    max-width: 100%; max-height: 80px;
+    object-fit: contain;
+    filter: brightness(0.85) grayscale(0.2);
+    transition: filter 0.3s;
     pointer-events: none;
+  }
+  .s-logo-cell:hover .s-logo-img {
+    filter: brightness(1) grayscale(0);
   }
 
   /* ── CTA ── */
@@ -251,9 +254,23 @@ function AnimTitle() {
 }
 
 const sponsors = [
-  'Sponsor Name', 'Sponsor Name', 'Sponsor Name',
-  'Sponsor Name', 'Sponsor Name', 'Sponsor Name',
-  'Sponsor Name', 'Sponsor Name', 'Sponsor Name',
+  { file: 'aarnell.png',           name: 'Aarnell' },
+  { file: 'budhani.png',           name: 'Budhani' },
+  { file: 'chocolate delight.png', name: 'Chocolate Delight' },
+  { file: 'ct.png',                name: 'CT' },
+  { file: 'eduoptions.png',        name: 'Edu Options' },
+  { file: 'fateh logo.png',        name: 'Fateh' },
+  { file: 'gfg logo tran 1.png',   name: 'GeeksForGeeks' },
+  { file: 'goodluck.png',          name: 'Good Luck' },
+  { file: 'kala.png',              name: 'Kala' },
+  { file: 'khs.png',               name: 'KHS' },
+  { file: 'logo1 2.png',           name: 'Logo' },
+  { file: 'logopizza 1.png',       name: 'Pizza' },
+  { file: 'myeqn.png',             name: 'MyEqn' },
+  { file: 'patils kicjen.png',     name: "Patil's Kitchen" },
+  { file: 'redbull.png',           name: 'Red Bull' },
+  { file: 'ROYAL ENFIELD 2.png',   name: 'Royal Enfield' },
+  { file: 'unstop.png',            name: 'Unstop' },
 ];
 
 export default function Sponsors() {
@@ -302,9 +319,13 @@ export default function Sponsors() {
       <div className="s-section">
         <div className="s-section-label">Partner Brands</div>
         <div className="s-logo-grid s-rev" ref={logoRef}>
-          {sponsors.map((name, i) => (
-            <div key={i} className="s-logo-cell" style={{ transitionDelay: `${i * 50}ms` }}>
-              <span className="s-logo-name">{name}</span>
+          {sponsors.map((s, i) => (
+            <div key={i} className="s-logo-cell" style={{ transitionDelay: `${i * 40}ms` }}>
+              <img
+                src={`/Sponsors/${encodeURIComponent(s.file)}`}
+                alt={s.name}
+                className="s-logo-img"
+              />
             </div>
           ))}
         </div>
