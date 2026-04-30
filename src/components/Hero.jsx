@@ -117,7 +117,7 @@ export default function Hero() {
       <div className="hero-left">
         <div className="hero-eyebrow">
           <span className="hero-eyebrow-dot" />
-          Empowering Futures · Est. 2016
+          Academic Excellence · Est. 2022
         </div>
         <h1 className="hero-h1">
           Abhivriddhi
@@ -130,8 +130,9 @@ export default function Hero() {
             Student Training and Development Committee
           </span>
         </h1>
-        <p className="hero-tagline">Fostering Change and Impacting Lives</p>
-        <p className="hero-desc">The official Student Training and Development Committee of VIT Pune, committed to fostering growth, leadership, and excellence. Through impactful events, skill-building workshops, and mentorship initiatives, we empower students to unlock their potential and shape a brighter future.</p>
+        <p className="hero-tagline">Fostering change and impacting lives.</p>
+        <p className="hero-desc">The official Student Training and Development Committee of VIT Pune, committed to fostering growth, leadership, and excellence. Through impactful events, skill-building workshops, and mentorship initiatives, we empower students to unlock their potential and shape a brighter future.
+</p>
         <div className="hero-cta-row">
           <Link to="/about" className="btn-primary">
             Explore More <span className="btn-arrow">→</span>
