@@ -22,7 +22,7 @@ const events = [
     num: '03',
     title: 'EATON Changing Gears',
     tag: 'Industry Partnership',
-    desc: 'EATON is a collaborative initiative designed to strengthen teamwork and essential soft skills. Through a series of interactive sessions and activities in a hybrid format, it enables students to develop communication, collaboration, and professional readiness.',
+    desc: 'EATON is a collaborative initiative designed to strengthen teamwork and essential soft skills.Through a series of interactive sessions and activities in a hybrid format, it enables students to develop communication, collaboration, and professional readiness.',
     pills: ['LinkedIn', 'Teamwork', 'Career Boost'],
     color: '#ccb88a',
   },
@@ -108,10 +108,10 @@ export default function Philosophy() {
         <div className="phil-left-inner">
           <div className="section-label">Featured Events</div>
           <h2 className="phil-heading">
-            A Journey of <em>Growth</em>
+            The Development <em>Framework</em>
           </h2>
           <p className="phil-sub">
-            Three landmark experiences. One continuous path toward student excellence — from freshers to industry-ready professionals.
+            A structured pathway designed to guide students through every stage of their growth. From gaining early clarity and building essential skills to applying them in real-world environments, each experience contributes to developing confident, industry-ready professionals.
           </p>
           <div className="phil-progress-track">
             <div className="phil-progress-bar" ref={progressBarRef} />
