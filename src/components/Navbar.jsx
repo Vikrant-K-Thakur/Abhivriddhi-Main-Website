@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { triggerPageTransition } from './PageLoader';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -13,6 +14,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -20,9 +22,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  function handleClick(e, to) {
+    e.preventDefault();
+    setOpen(false);
+    triggerPageTransition(to, navigate);
+  }
+
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
-      <NavLink to="/" className="nav-logo">Abhivriddhi</NavLink>
+      <NavLink to="/" className="nav-logo" onClick={e => handleClick(e, '/')}>Abhivriddhi</NavLink>
 
       <ul className={`nav-links ${open ? 'nav-open' : ''}`}>
         {links.map(l => (
@@ -31,7 +39,7 @@ export default function Navbar() {
               to={l.to}
               end={l.to === '/'}
               className={({ isActive }) => isActive ? 'active' : ''}
-              onClick={() => setOpen(false)}
+              onClick={e => handleClick(e, l.to)}
             >
               {l.label}
             </NavLink>

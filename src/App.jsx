@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './index.css';
 import Loader from './components/Loader';
+import PageLoader from './components/PageLoader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -14,9 +15,17 @@ import Events from './pages/Events';
 import Sponsors from './pages/Sponsors';
 import Contact from './pages/Contact';
 
+// Clear navigated flag on page reload so loader shows again
+if (window.performance?.navigation?.type === 1 || performance.getEntriesByType?.('navigation')[0]?.type === 'reload') {
+  sessionStorage.removeItem('ab-navigated');
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [pathname]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    sessionStorage.setItem('ab-navigated', '1');
+  }, [pathname]);
   return null;
 }
 
@@ -33,16 +42,22 @@ function Home() {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
+  const showLoader = !sessionStorage.getItem('ab-loaded') || sessionStorage.getItem('ab-navigated') !== '1';
 
+  useEffect(() => {
+    if (!showLoader) document.body.classList.add('loaded');
+  }, []);
   const handleLoaderDone = useCallback(() => {
-    document.body.classList.add('loaded');
+    sessionStorage.setItem('ab-loaded', '1');
+    sessionStorage.setItem('ab-navigated', '1');
     setLoaded(true);
   }, []);
 
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Loader hidden={loaded} onDone={handleLoaderDone} />
+      <PageLoader />
+      {showLoader && !loaded && <Loader onDone={handleLoaderDone} />}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
