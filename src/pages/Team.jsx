@@ -371,8 +371,9 @@ const coreTeam = [
 
 const domains = [
   {
-    name: 'Public Relations',
+    name: 'Corporate Relations',
     color: '#b8cc8a',
+    desc: 'Focuses on building and nurturing strategic partnerships with industry leaders. Secures sponsorships, collaborations, and professional opportunities that enhance the organization\'s reach and credibility.',
     members: [
       { name: 'Name', role: 'Head' },
       { name: 'Name', role: 'Co-Head' },
@@ -382,8 +383,9 @@ const domains = [
     ],
   },
   {
-    name: 'Technical',
+    name: 'Curation',
     color: '#8ab4cc',
+    desc: 'Shapes the overall experience by ideating, structuring, and refining initiatives and content direction. Drives communication across emails, WhatsApp, and social media with creativity and clarity.',
     members: [
       { name: 'Name', role: 'Head' },
       { name: 'Name', role: 'Co-Head' },
@@ -393,8 +395,9 @@ const domains = [
     ],
   },
   {
-    name: 'Design',
+    name: 'Branding',
     color: '#cc9e8a',
+    desc: 'Defines and elevates the visual identity of the committee. Brings together Multimedia, Design and Technical expertise to create cohesive visuals — from graphics and motion content to digital interfaces.',
     members: [
       { name: 'Name', role: 'Head' },
       { name: 'Name', role: 'Co-Head' },
@@ -404,8 +407,9 @@ const domains = [
     ],
   },
   {
-    name: 'Content',
+    name: 'Outreach',
     color: '#b08acc',
+    desc: 'Drives Abhivriddhi\'s visibility and engagement through publicity, branding, and social media presence. Creates impactful communication strategies that connect with students and expand reach.',
     members: [
       { name: 'Name', role: 'Head' },
       { name: 'Name', role: 'Co-Head' },
@@ -415,8 +419,9 @@ const domains = [
     ],
   },
   {
-    name: 'Operations',
+    name: 'Management',
     color: '#ccb88a',
+    desc: 'Ensures smooth execution of initiatives through efficient finance handling and operational planning. Focuses on resource management, coordination, and structured processes that keep every event running seamlessly.',
     members: [
       { name: 'Name', role: 'Head' },
       { name: 'Name', role: 'Co-Head' },

@@ -304,10 +304,9 @@ function useCopy() {
 }
 
 const CONTACTS = [
-  { name: 'Krishna Vyas',      phone: '+91 73979 25606' },
-  { name: 'Sharan Gujarathi',  phone: '+91 75883 25838' },
-  { name: 'Gauravi Kadam',     phone: '+91 74983 87282' },
-  { name: 'Neel Sahasrabudhe', phone: '+91 91759 52446' },
+  { name: 'Shivam Ghodake',      phone: '+91 95796 54986' },
+  { name: 'Aakanksha Bhusewar',  phone: '+91 788 805 0888' },
+  { name: 'Adarsh Khare',     phone: '+91 70581 51744' },
 ];
 
 const FAQS = [
@@ -454,8 +453,8 @@ export default function Contact() {
             <h3 className="c-card-title">Email</h3>
           </div>
           <div className="c-erow">
-            <a href="mailto:vishwaconclave@vit.edu" className="c-elink">vishwaconclave@vit.edu</a>
-            <button className="c-ecopy" onClick={() => copy('vishwaconclave@vit.edu', 'email')} title="Copy email"><CopyIco /></button>
+            <a href="mailto:abhivriddhi@vit.edu" className="c-elink">abhivriddhi@vit.edu</a>
+            <button className="c-ecopy" onClick={() => copy('abhivriddhi@vit.edu', 'email')} title="Copy email"><CopyIco /></button>
             <span className={`c-toast ${copied === 'email' ? 'on' : ''}`}>Copied!</span>
           </div>
         </div>

@@ -85,7 +85,7 @@ function Hero() {
           fontFamily: T.fontSans, fontWeight:500,
         }} className="ab-hero-badge">
           <span style={{ width:6, height:6, borderRadius:'50%', background:T.accent, animation:'ab-dot 2s ease-in-out infinite' }} />
-          Student Training &amp; Development Club
+          Student Training &amp; Development Committee
         </div>
 
         <AnimHeading />
@@ -94,7 +94,7 @@ function Hero() {
           fontFamily: T.fontSans, fontSize:'0.95rem', lineHeight:1.9,
           color: T.textMuted, maxWidth:500, margin:'0 auto',
         }} className="ab-hero-sub">
-          A student-led community dedicated to transforming learners into industry-ready professionals through training, mentorship, and real-world experience.
+          A student-led community dedicated to transforming learners into confident, industry-ready professionals through training, mentorship, leadership, and real-world opportunities.
         </p>
 
         <div style={{ display:'flex', gap:16, flexWrap:'wrap', justifyContent:'center', marginTop:8 }} className="ab-hero-btns">
@@ -107,7 +107,7 @@ function Hero() {
           }}
           onMouseEnter={e => e.currentTarget.style.background = T.accentHov}
           onMouseLeave={e => e.currentTarget.style.background = T.accent}
-          >Learn More</a>
+          >Explore More</a>
           <a href="#vmo" style={{
             fontFamily: T.fontSans, fontSize:'0.8rem', fontWeight:400,
             color: T.textMuted, background:'transparent',
@@ -225,12 +225,12 @@ function AboutSplit() {
 
         {/* Text right */}
         <div ref={ref2} className="ab-reveal ab-rr">
-          <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'1rem' }} className="ab-split-label">About Abhivriddhi</span>
+          <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'1rem' }} className="ab-split-label">Student Training &amp; Development Committee</span>
           <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(1.9rem,3.8vw,2.8rem)', lineHeight:1.18, color:T.text, marginBottom:'1.5rem' }} className="ab-split-h2">
-            Where Potential Meets <em style={{ color:T.accent, fontStyle:'italic' }}>Purpose.</em>
+            Where Growth <em style={{ color:T.accent, fontStyle:'italic' }}>Begins.</em>
           </h2>
           <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.4rem' }} className="ab-split-p">
-            Abhivriddhi — meaning <strong style={{ color:'rgba(232,228,220,0.78)', fontWeight:400 }}>growth and prosperity</strong> in Sanskrit — is a student-run club built on one belief: every student holds extraordinary potential when given the right environment to flourish.
+            A student-led community dedicated to transforming learners into confident, industry-ready professionals through training, mentorship, leadership, and real-world opportunities.
           </p>
           <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.8rem' }} className="ab-split-p">
             We bridge the gap between classroom knowledge and industry readiness through structured training, peer mentorship, and a culture where growth is collective.
@@ -250,9 +250,9 @@ function AboutSplit() {
 function VMO() {
   const hRef = useReveal();
   const cards = [
-    { num:'01', title:'Vision', body:'To be the most impactful student development community in India — where every student discovers their potential and emerges as a confident, skilled professional.' },
-    { num:'02', title:'Mission', body:'To deliver transformative learning experiences through hands-on training, expert mentorship, and a culture of excellence — equipping students with skills and network to thrive.' },
-    { num:'03', title:'Objectives', body:'Connecting students with industry professionals, hosting skill-building programs, fostering leadership, and building a community committed to continuous growth.' },
+    { num:'01', title:'Vision', body:'To be a leading student development community that inspires growth, nurtures leadership, and empowers every student to realize their fullest potential.' },
+    { num:'02', title:'Mission', body:'To create transformative learning experiences through training, mentorship, industry interaction, and skill-building initiatives that prepare students for success beyond the classroom.' },
+    { num:'03', title:'Objectives', body:'Foster personal and professional growth, bridge the gap between academics and industry, provide skill enhancement opportunities, build leadership and teamwork abilities, and create a community driven by innovation and excellence.' },
   ];
   return (
     <section id="vmo" style={{ padding:'clamp(3rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)', borderBottom:`1px solid ${T.borderSub}`, background: T.bg2 }}>

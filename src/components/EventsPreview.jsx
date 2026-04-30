@@ -4,26 +4,26 @@ import { Link } from 'react-router-dom';
 const events = [
   {
     id: '01',
-    name: 'Engineering Unplugged',
-    tag: 'Flagship · Freshers',
-    desc: 'An electrifying event that ignites the stage for freshers to confidently step into the spotlight and embrace the limitless possibilities of their 4-year engineering journey.',
-    pills: ['Confidence', 'Opportunity', 'Passion', 'Engineering'],
+    name: 'E.D.G.E',
+    tag: 'Flagship Experience',
+    desc: 'EDGE is our flagship experience designed to bridge ambition with opportunity. Through industry interaction, practical exposure, and meaningful dialogue, it enables students to develop clarity, confidence, and a professional edge.',
+    pills: ['Industry Interaction', 'Practical Exposure', 'Professional Edge'],
     color: '#b8cc8a',
   },
   {
     id: '02',
-    name: 'E.D.G.E',
-    tag: 'Summit · 3 Days',
-    desc: 'A transformative 3-day Student Development Summit empowering students with Resume Building, Personal Branding, Money Management, and career guidance.',
-    pills: ['Resume Building', 'Personal Branding', 'Mock Interviews'],
+    name: 'Engineering Unplugged',
+    tag: 'Freshers · First Year',
+    desc: 'Engineering Unplugged (EU) marks the beginning of the engineering journey. Curated for first-year students, it equips them with the mindset, direction, and insights needed to navigate the next four years with intention.',
+    pills: ['Mindset', 'Direction', 'Clarity'],
     color: '#8ab4cc',
   },
   {
     id: '03',
-    name: 'EATON Changing Gears',
-    tag: 'Industry Partnership',
-    desc: 'Flagship event in partnership with Eaton — specialized training in LinkedIn optimization, teamwork, and communication skills for professional success.',
-    pills: ['LinkedIn', 'Teamwork', 'Career Boost'],
+    name: 'EATON',
+    tag: 'Industry Collaboration',
+    desc: 'EATON is a collaborative initiative designed to strengthen teamwork and essential soft skills. Through interactive sessions and activities in a hybrid format, it enables students to develop communication, collaboration, and professional readiness.',
+    pills: ['Teamwork', 'Communication', 'Soft Skills'],
     color: '#ccb88a',
   },
 ];
@@ -46,8 +46,8 @@ export default function EventsPreview() {
     <section id="events-preview" ref={sectionRef}>
       <div className="ep-header reveal">
         <div className="section-label">Featured Events</div>
-        <h2 className="section-heading">A Journey of <em>Growth</em></h2>
-        <p className="ep-sub">Three stages. One continuous path toward student excellence.</p>
+        <h2 className="section-heading">The Development <em>Framework</em></h2>
+        <p className="ep-sub">A structured pathway designed to guide students through every stage of their growth. From gaining early clarity and building essential skills to applying them in real-world environments, each experience contributes to developing confident, industry-ready professionals.</p>
       </div>
 
       <div className="ep-journey">

@@ -324,7 +324,7 @@ export default function Sponsors() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, position: 'relative', zIndex: 1 }}>
             <a href="/contact" className="s-btn">Get in Touch →</a>
-            <a href="mailto:vishwaconclave@vit.edu" className="s-btn-ghost">vishwaconclave@vit.edu</a>
+            <a href="mailto:abhivriddhi@vit.edu" className="s-btn-ghost">abhivriddhi@vit.edu</a>
           </div>
         </div>
       </div>
