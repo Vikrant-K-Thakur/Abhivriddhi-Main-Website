@@ -125,10 +125,12 @@ export default function PageLoader() {
           key={i}
           ref={el => stripRefs.current[i] = el}
           style={{
-            flex: 1,
+            width: `${100 / N}%`,
+            flexShrink: 0,
             height: '100%',
             background: '#0a0d0f',
             borderRight: i < N - 1 ? '1px solid rgba(184,204,138,0.2)' : 'none',
+            boxSizing: 'border-box',
             transform: 'translateY(-100%)',
             willChange: 'transform',
           }}
