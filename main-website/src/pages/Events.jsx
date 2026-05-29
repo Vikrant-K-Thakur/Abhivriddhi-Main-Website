@@ -431,41 +431,41 @@ export default function Events() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const featuredEvents = [
+      const featuredEvents = [
     {
       title: "Engineering Unplugged",
-      highlight: "Step into an extraordinary journey – an electrifying event crafted to inspire and empower freshers.",
-      description: "Engineering Unplugged (EU) is designed as an early-stage intervention for first-year students, helping them navigate the transition into engineering with clarity and intent. It addresses the uncertainty that often comes with starting out, offering a broader perspective on what an engineering journey can lead to. EU is structured into panel discussion and speaker-led experience , which features individuals who began with engineering but have  carved paths in diverse fields. Through their journeys and insights, students are encouraged ",
-      tags: ["Confidence", "Opportunity", "Passion", "Engineering"],
+      highlight: "An immersive experience designed to help freshers begin their engineering journey with clarity, confidence, and purpose.",
+      description: "Engineering Unplugged (EU) helps first-year students navigate the transition into engineering through speaker sessions, panel discussions, and inspiring journeys of individuals who explored diverse paths beyond conventional engineering careers.",
+      tags: ["Clarity", "Growth", "Exploration", "Engineering"],
       ctaText: "Explore Engineering Unplugged",
     },
     {
-      title: "E.D.G.E Student Development Summit",
-      highlight: "Join a transformative 3-day experience designed to equip students with career-defining skills.",
-      description: "EDGE is Abhivriddhi’s flagship experience, designed to bring students closer to the realities of the professional world. It goes beyond conventional sessions focusing on exposure, perspective, and the insights beyond classrooms. The experience is structured around core stages of the hiring process through technical assessments, group discussions, and personal interviews offering students a closer look at real-world evaluation dynamics.",
-      tags: ["Essential Skills", "Resume Building", "Career Growth", "Practical Experience"],
-      ctaText: "Explore E.D.G.E Summit",
+      title: "EDGE",
+      highlight: "Abhivriddhi's flagship experience designed to bridge ambition with real-world exposure and professional readiness.",
+      description: "EDGE offers students a closer look at industry expectations through technical assessments, interview experiences, and practical exposure that reflect real-world evaluation dynamics beyond classrooms.",
+      tags: ["Exposure", "Growth", "Industry", "Professionalism"],
+      ctaText: "Explore EDGE",
     },
     {
-      title: "EATON Changing Gears",
-      highlight: "Discover engaging sessions that connect you directly with industry leaders.",
-      description: "EATON is a collaborative experience developed in partnership with Eaton, focused on strengthening the interpersonal and professional skills essential beyond technical knowledge. It emphasizes the importance of communication, teamwork, and adaptability in real-world environments. EATON is Delivered in a hybrid format, the program combines structured sessions with interactive activities that encourage participation and practical learning. It enables students to build confidence, work effectively in teams, and develop the soft skills required to grow as well-rounded professionals.",
-      tags: ["LinkedIn", "Teamwork", "Career Boost", "Real-World Experience"],
-      ctaText: "Explore EATON Collab",
+      title: "EATON",
+      highlight: "A collaborative experience focused on building the interpersonal and professional skills essential beyond technical knowledge.",
+      description: "Developed in collaboration with Eaton, the program combines interactive sessions and practical activities to strengthen communication, teamwork, adaptability, and confidence in professional environments.",
+      tags: ["Communication", "Teamwork", "Adaptability", "Confidence"],
+      ctaText: "Explore EATON",
     },
     {
-      title: "Brand You",
-      highlight: "Craft your personal brand and stand out in the competitive professional landscape.",
-      description: "The Brand You Workshop by Abhivriddhi was designed to help students understand and build their personal brand through self-awareness and skill development. It focused on identifying individual strengths, values, and unique qualities while enhancing communication, teamwork, and leadership abilities The workshop aimed to instill a growth mindset, enabling participants to align their personal identity with their academic and career aspirations. Overall, it boosted confidence, improved soft skills, and helped students present themselves more professionally in real-world scenarios.",
-      tags: ["Personal Branding", "Identity", "Professional Growth", "Networking"],
-      ctaText: "Explore Brand You",
+      title: "BRAND YOU",
+      highlight: "A workshop focused on helping students discover, shape, and communicate their personal brand with confidence.",
+      description: "Brand You encourages self-awareness, communication, leadership, and professional development while helping students align their strengths, values, and aspirations with real-world opportunities.",
+      tags: ["Identity", "Leadership", "Confidence", "Growth"],
+      ctaText: "Explore BRAND YOU",
     },
     {
-      title: "Avirbhav",
-      highlight: "Witness the grand unveiling of talent, innovation, and creativity at our flagship annual event.",
-      description: "Aavirbhav is an initiative focused on promoting emotional well-being among first-year students as they begin their college journey. It aims to create awareness around mental health while encouraging openness and self-reflection. Conducted through short, interactive classroom sessions, the experience emphasizes participation, dialogue, and practical understanding. Students are guided to recognize stress, build resilience, and approach challenges with a healthier mindset.",
-      tags: ["Annual Event", "Innovation", "Networking", "Celebration"],
-      ctaText: "Explore Avirbhav",
+      title: "AAVIRBHAV",
+      highlight: "An initiative dedicated to promoting emotional well-being and healthier mindsets among students.",
+      description: "Aavirbhav creates awareness around mental health through interactive sessions that encourage self-reflection, open dialogue, resilience, and practical approaches towards handling challenges during the college journey.",
+      tags: ["Wellbeing", "Awareness", "Resilience", "Growth"],
+      ctaText: "Explore AAVIRBHAV",
     },
   ];
 

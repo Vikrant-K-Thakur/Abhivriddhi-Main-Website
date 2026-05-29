@@ -22,7 +22,7 @@ const events = [
     id: '03',
     name: 'EATON',
     tag: 'Industry Collaboration',
-    desc: 'EATON is a collaborative initiative designed to strengthen teamwork and essential soft skills. Through interactive sessions and activities in a hybrid format, it enables students to develop communication, collaboration, and professional readiness.',
+    desc: 'EATON is a collaborative initiative designed to strengthen teamwork and essential soft skills. Through a series of interactive sessions and activities in a hybrid format, it enables students to develop communication, collaboration, and professional readiness.',
     pills: ['Teamwork', 'Communication', 'Soft Skills'],
     color: '#ccb88a',
   },

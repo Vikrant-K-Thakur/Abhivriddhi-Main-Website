@@ -94,7 +94,7 @@ function Hero() {
           fontFamily: T.fontSans, fontSize:'0.95rem', lineHeight:1.9,
           color: T.textMuted, maxWidth:500, margin:'0 auto',
         }} className="ab-hero-sub">
-          A student-led community dedicated to transforming learners into confident, industry-ready professionals through training, mentorship, leadership, and real-world opportunities.
+          Abhivriddhi — meaning growth and prosperity in Sanskrit — is a student-driven community built on the belief that every student has the potential to evolve, lead, and create impact when given the right opportunities and environment.
         </p>
 
         <div style={{ display:'flex', gap:16, flexWrap:'wrap', justifyContent:'center', marginTop:8 }} className="ab-hero-btns">
@@ -227,17 +227,17 @@ function AboutSplit() {
         <div ref={ref2} className="ab-reveal ab-rr">
           <span style={{ fontFamily:T.fontSans, fontSize:'0.63rem', letterSpacing:'0.28em', textTransform:'uppercase', color:T.accent, display:'block', marginBottom:'1rem' }} className="ab-split-label">Student Training &amp; Development Committee</span>
           <h2 style={{ fontFamily:T.fontSerif, fontWeight:300, fontSize:'clamp(1.9rem,3.8vw,2.8rem)', lineHeight:1.18, color:T.text, marginBottom:'1.5rem' }} className="ab-split-h2">
-            Where Growth <em style={{ color:T.accent, fontStyle:'italic' }}>Begins.</em>
+            Where Potential Evolves Into <em style={{ color:T.accent, fontStyle:'italic' }}>Growth.</em>
           </h2>
           <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.4rem' }} className="ab-split-p">
-            A student-led community dedicated to transforming learners into confident, industry-ready professionals through training, mentorship, leadership, and real-world opportunities.
+            Abhivriddhi — meaning growth and prosperity in Sanskrit — is a student-driven community built on the belief that every student has the potential to evolve, lead, and create impact when given the right opportunities and environment.
+            We aim to bridge the gap between academics and real-world readiness through mentorship, collaborative initiatives, skill development, and meaningful experiences that encourage both personal and professional growth.
+            At Abhivriddhi, growth is not limited to achievements alone — it is reflected in leadership, creativity, teamwork, confidence, and the journey of becoming a better version of oneself alongside a community that grows together.
           </p>
-          <p style={{ fontFamily:T.fontSans, fontWeight:300, fontSize:'0.92rem', lineHeight:1.9, color:T.textMuted, marginBottom:'1.8rem' }} className="ab-split-p">
-            We bridge the gap between classroom knowledge and industry readiness through structured training, peer mentorship, and a culture where growth is collective.
-          </p>
+          
           <div style={{ borderLeft:`2px solid ${T.accent}`, padding:'1rem 1.3rem', background:`rgba(184,204,138,0.05)`, borderRadius:'0 10px 10px 0' }}>
             <p style={{ fontFamily:T.fontSerif, fontStyle:'italic', fontWeight:300, fontSize:'1rem', color:'rgba(232,228,220,0.65)', lineHeight:1.6 }} className="ab-split-quote">
-              "Growth is not a destination — it is our default state."
+              "Growth is not a destination; it is the continuous process of becoming" ✨
             </p>
           </div>
         </div>
@@ -252,7 +252,7 @@ function VMO() {
   const cards = [
     { num:'01', title:'Vision', body:'To be a leading student development community that inspires growth, nurtures leadership, and empowers every student to realize their fullest potential.' },
     { num:'02', title:'Mission', body:'To create transformative learning experiences through training, mentorship, industry interaction, and skill-building initiatives that prepare students for success beyond the classroom.' },
-    { num:'03', title:'Objectives', body:'Foster personal and professional growth, bridge the gap between academics and industry, provide skill enhancement opportunities, build leadership and teamwork abilities, and create a community driven by innovation and excellence.' },
+    { num:'03', title:'Objectives', body:'Abhivriddhi aims to foster personal and professional growth among students by bridging the gap between academics and industry expectations. Through practical learning experiences, the committee focuses on developing leadership, confidence, teamwork, and continuous self-growth within a community driven by innovation and excellence.' },
   ];
   return (
     <section id="vmo" style={{ padding:'clamp(3rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)', borderBottom:`1px solid ${T.borderSub}`, background: T.bg2 }}>
