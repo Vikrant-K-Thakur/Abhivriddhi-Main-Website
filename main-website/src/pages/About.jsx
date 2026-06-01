@@ -34,7 +34,7 @@ function AnimHeading() {
   ];
   let delay = 0.12;
   return (
-    <h1 style={{
+    <h1 className="ab-hero-title" style={{
       fontFamily: T.fontSerif, fontWeight: 300,
       fontSize: 'clamp(64px,10vw,120px)',
       lineHeight: 1.02, letterSpacing: '0.01em',
@@ -252,7 +252,7 @@ function VMO() {
   const cards = [
     { num:'01', title:'Vision', body:'To be a leading student development community that inspires growth, nurtures leadership, and empowers every student to realize their fullest potential.' },
     { num:'02', title:'Mission', body:'To create transformative learning experiences through training, mentorship, industry interaction, and skill-building initiatives that prepare students for success beyond the classroom.' },
-    { num:'03', title:'Objectives', body:'Abhivriddhi aims to foster personal and professional growth among students by bridging the gap between academics and industry expectations. Through practical learning experiences, the committee focuses on developing leadership, confidence, teamwork, and continuous self-growth within a community driven by innovation and excellence.' },
+    { num:'03', title:'Objectives', body:'Abhivriddhi aims to foster personal and professional growth among students by bridging the gap between academics and industry expectations. ' },
   ];
   return (
     <section id="vmo" style={{ padding:'clamp(3rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)', borderBottom:`1px solid ${T.borderSub}`, background: T.bg2 }}>
@@ -347,6 +347,7 @@ const aboutStyles = `
 
     /* Hero title */
     .ab-char { font-size: clamp(2.6rem, 8vw, 4rem) !important; }
+    .ab-hero-title { text-align: center !important; }
 
     /* Hero badge & sub text */
     .ab-hero-badge { font-size: 0.6rem !important; }

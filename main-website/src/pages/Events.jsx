@@ -112,7 +112,7 @@ function AnimTitle() {
   ];
   let delay = 0.15;
   return (
-    <h1 style={{
+    <h1 className="ev-hero-title" style={{
       fontFamily: "'Cormorant Garamond', serif",
       fontWeight: 300,
       lineHeight: 1.02,
@@ -532,10 +532,13 @@ export default function Events() {
           .event-grid { grid-template-columns: 1fr !important; }
           .event-visual { order: 1 !important; min-height: 220px !important; border-left: none !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
           .event-text { order: 2 !important; padding: 28px 20px !important; }
+          .ev-hero-inner { padding: 0 16px !important; }
+          .ev-hero-title { text-align: center !important; }
         }
         @media (max-width: 480px) {
           .event-text { padding: 20px 16px !important; }
           .event-visual { min-height: 180px !important; }
+          .ev-hero-inner { padding: 0 12px !important; }
         }
 
         ::-webkit-scrollbar { width: 5px; }
@@ -570,7 +573,7 @@ export default function Events() {
         <div style={{ position:"absolute", top:"20%", left:0, right:0, height:1, background:`linear-gradient(to right, transparent, ${T.accent}12, transparent)`, zIndex:0 }} />
         <div style={{ position:"absolute", bottom:"20%", left:0, right:0, height:1, background:`linear-gradient(to right, transparent, ${T.accent}12, transparent)`, zIndex:0 }} />
 
-        <div style={{ position:"relative", zIndex:2, maxWidth:860, margin:"0 auto", padding:"0 32px", textAlign:"center" }}>
+        <div className="ev-hero-inner" style={{ position:"relative", zIndex:2, maxWidth:860, margin:"0 auto", padding:"0 32px", textAlign:"center" }}>
           <div className="ev-badge">
             <span className="ev-badge-dot" />
             Abhivriddhi · Student Training &amp; Development Club
