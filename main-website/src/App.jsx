@@ -10,7 +10,7 @@ import Philosophy from './components/Philosophy';
 import Domains from './components/Domains';
 import Aftermovie from './components/Aftermovie';
 import About from './pages/About';
-import Team from './pages/Team';
+// import Team from './pages/Team';
 import Events from './pages/Events';
 import Sponsors from './pages/Sponsors';
 import Contact from './pages/Contact';
@@ -62,7 +62,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/team" element={<Team />} />
+        {/* <Route path="/team" element={<Team />} /> */}
         <Route path="/events" element={<Events />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/contact" element={<Contact />} />

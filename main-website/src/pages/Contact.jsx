@@ -318,7 +318,6 @@ const FAQS = [
 
 const SOCIALS = [
   { label: 'Instagram', cls: 'ig', svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12c0-3.2 0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 4.9.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24c3.3 0 3.7 0 4.9-.1 4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9 0-3.3 0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4A6.2 6.2 0 0012 5.8zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg> },
-  { label: 'X (Twitter)', cls: 'tw', svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.23H2.744l7.737-8.845L1.99 2.25H8.1l4.258 5.634L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg> },
   { label: 'YouTube',    cls: 'yt', svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> },
   { label: 'LinkedIn',   cls: 'li', svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 10 1.78 1.78 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg> },
 ];
@@ -475,29 +474,8 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* FAQ */}
-        <div className="c-card c-rev" ref={r(5)} style={{ transitionDelay: '400ms' }}>
-          <div className="c-card-head">
-            <div className="c-card-icon">
-              <Ico d2={<><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" strokeLinecap="round"/><line x1="12" y1="17" x2="12.01" y2="17"/></>} />
-            </div>
-            <h3 className="c-card-title">Quick Answers</h3>
-          </div>
-          <div className="c-faq-list">
-            {FAQS.map((faq, i) => (
-              <div key={i} className="c-faq-item">
-                <button className={`c-faq-q ${openFaq === i ? 'open' : ''}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                  {faq.q}
-                  <span className="c-faq-chev"><ChevIco /></span>
-                </button>
-                <div className={`c-faq-a ${openFaq === i ? 'open' : ''}`}>{faq.a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Form */}
-        <div className="c-card c-rev" ref={(el) => { refs.current[6] = el; formRef.current = el; }} style={{ transitionDelay: '480ms' }}>
+        <div className="c-card c-span2 c-rev" ref={(el) => { refs.current[6] = el; formRef.current = el; }} style={{ transitionDelay: '400ms' }}>
           <div className="c-card-head">
             <div className="c-card-icon">
               <Ico d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />

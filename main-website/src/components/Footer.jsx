@@ -107,11 +107,11 @@ export default function Footer() {
             <a href="https://maps.google.com/?q=Vishwakarma+Institute+of+Technology+Bibwewadi+Pune" target="_blank" rel="noopener noreferrer" style={{ color:'rgba(232,228,220,0.45)', textDecoration:'none', transition:'color 0.25s', display:'block' }}
             onMouseEnter={e => e.currentTarget.style.color='#b8cc8a'}
             onMouseLeave={e => e.currentTarget.style.color='rgba(232,228,220,0.45)'}
-            >VIT, Bibwewadi, Pune</a>
+            >VIT Pune</a>
             <a href="mailto:abhivirddhi@gmail.com" style={{ color:'rgba(232,228,220,0.45)', textDecoration:'none', transition:'color 0.25s', display:'block', marginBottom:'1.2rem' }}
             onMouseEnter={e => e.currentTarget.style.color='#b8cc8a'}
             onMouseLeave={e => e.currentTarget.style.color='rgba(232,228,220,0.45)'}
-            >abhivirddhi@gmail.com</a>
+            >abhivirddhi@vit.edu</a>
           </div>
           <Link to="/contact" style={{
             display: 'inline-block',
@@ -142,7 +142,7 @@ export default function Footer() {
         color: 'rgba(232,228,220,0.2)',
         letterSpacing: '0.05em',
       }}>
-        <span>© 2024 Abhivriddhi Academic Club. All rights reserved.</span>
+        <span>© 2026 Abhivriddhi Academic Club. All rights reserved.</span>
         <span>Made by Abhivriddhi Technical Team 2026</span>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
@@ -256,7 +256,6 @@ function AnimTitle() {
 const sponsors = [
   { file: 'aarnell.png',           name: 'Aarnell' },
   { file: 'budhani.png',           name: 'Budhani' },
-  { file: 'chocolate delight.png', name: 'Chocolate Delight' },
   { file: 'ct.png',                name: 'CT' },
   { file: 'eduoptions.png',        name: 'Edu Options' },
   { file: 'fateh logo.png',        name: 'Fateh' },
@@ -276,7 +275,6 @@ const sponsors = [
 export default function Sponsors() {
   const logoRef = useRef(null);
   const ctaRef  = useRef(null);
-  const [showFab, setShowFab] = useState(false);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -287,12 +285,6 @@ export default function Sponsors() {
     );
     [logoRef, ctaRef].forEach(r => r.current && obs.observe(r.current));
     return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const fn = () => setShowFab(window.scrollY > 260);
-    window.addEventListener('scroll', fn);
-    return () => window.removeEventListener('scroll', fn);
   }, []);
 
   return (
@@ -350,12 +342,6 @@ export default function Sponsors() {
         </div>
       </div>
 
-      <button
-        className={`s-fab ${showFab ? 'on' : ''}`}
-        onClick={() => ctaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-      >
-        Become a Sponsor →
-      </button>
     </div>
   );
 }

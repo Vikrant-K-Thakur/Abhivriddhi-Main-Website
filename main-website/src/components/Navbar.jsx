@@ -5,7 +5,6 @@ import { triggerPageTransition } from './PageLoader';
 const links = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/team', label: 'Team' },
   { to: '/events', label: 'Events' },
   { to: '/sponsors', label: 'Sponsors' },
   { to: '/contact', label: 'Contact Us' },
